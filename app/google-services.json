@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "740031370825",
+    "project_id": "financieme",
+    "storage_bucket": "financieme.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740031370825:android:064bb934b92fc2da32d198",
+        "android_client_info": {
+          "package_name": "mz.ac.luis.seia.finacieme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740031370825-4pmg72rcg06k1ijcfqncjpm1n0tlerua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvKpzHJ3dm02cAyPYbrDF86ieCr10Vyl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740031370825-4pmg72rcg06k1ijcfqncjpm1n0tlerua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
