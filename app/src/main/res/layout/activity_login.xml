@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cadeado" />
+        app:srcCompat="@drawable/cadeado"
+        android:contentDescription="TODO" />
 
     <EditText
         android:id="@+id/editLoginEmail"
@@ -27,7 +28,7 @@
         android:background="@drawable/custum_input"
         android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="5dp"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="text"
         android:padding="10dp"
         android:textSize="14sp"
