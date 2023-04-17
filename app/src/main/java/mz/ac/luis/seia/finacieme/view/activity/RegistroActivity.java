@@ -3,6 +3,7 @@ package mz.ac.luis.seia.finacieme.view.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import mz.ac.luis.seia.finacieme.model.User;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
 public class RegistroActivity extends AppCompatActivity {
-    private  ActivityRegistroBinding bindingRegistro;
+    private ActivityRegistroBinding bindingRegistro;
     private User user;
     private FirebaseAuth auth;
     @Override
@@ -39,6 +40,14 @@ public class RegistroActivity extends AppCompatActivity {
                         user = new User(bindingRegistro.editNomeRegistar.getText().toString(), bindingRegistro.editEmailRegistar.getText().toString(), bindingRegistro.editSenhaRegistar.getText().toString());
                         saveUser(user);
                     }
+            }
+        });
+
+        bindingRegistro.textViewFalcaLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
+                finish();
             }
         });
     }

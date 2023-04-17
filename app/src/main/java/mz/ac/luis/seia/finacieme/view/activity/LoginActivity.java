@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.progressBar.setVisibility(View.GONE);
 
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,16 +48,27 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.textViewRegistar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
+                finish();
+            }
+        });
     }
 
     public void validateUser(User user){
+        binding.progressBar.setVisibility(View.VISIBLE);
         auth = ConfigFirebase.getAuth();
         auth.signInWithEmailAndPassword(user.getEmail(),user.getSenha())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            binding.progressBar.setVisibility(View.GONE);
                             openMasterActivity();
+                            finish();
                         }else{
                             String excecao = "";
                             try {
@@ -68,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                             Toast.makeText(LoginActivity.this, excecao, Toast.LENGTH_SHORT).show();
+                            binding.progressBar.setVisibility(View.GONE);
                         }
                     }
                 });

@@ -29,7 +29,7 @@ public class MainActivity extends IntroActivity {
         addSlide(new FragmentSlide.Builder().background(android.R.color.white).canGoBackward(false).fragment(R.layout.intro1).build());
         addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro2).build());
         addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro3).build());
-        addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro_registro).canGoForward(false) .canGoForward(false).build());
+        addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro_registro).canGoBackward(false) .canGoForward(false).build());
 
     }
 
@@ -44,12 +44,14 @@ public class MainActivity extends IntroActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        verificarUsuarioLogado();
     }
 
     public void verificarUsuarioLogado(){
         auth = ConfigFirebase.getAuth();
         if(auth.getCurrentUser() !=null){
             openMasterActivity();
+            finish();
         }
     }
     public void openMasterActivity(){
