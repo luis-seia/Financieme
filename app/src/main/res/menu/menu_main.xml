@@ -2,14 +2,36 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/more" android:icon="@drawable/ic_more" android:title="" app:showAsAction="always">
+        <menu>
+            <item android:id="@+id/menu_definicoes"
+                android:title="Politica de privacidade"
+                android:icon="@drawable/ic_politica"
+                app:showAsAction="ifRoom"
+                />
 
-    <item android:id="@+id/menu_definicoes"
-        android:title="Definições"
-        app:showAsAction="never"/>
+            <item android:id="@+id/menu_suporte"
+                android:title="Suporte"
+                android:icon="@drawable/ic_menu_servicos"
+                app:showAsAction="ifRoom"
+                />
 
-    <item android:id="@+id/menu_sair"
-        android:title="Sair"
-        app:showAsAction="never"/>
+            <item android:id="@+id/menu_sobre"
+                android:title="Sobre"
+                android:icon="@drawable/ic_baseline_info_24"
+                app:showAsAction="ifRoom"
+                />
+
+            <item android:id="@+id/menu_sair"
+                android:title="Terminar sessão"
+                android:icon="@drawable/ic_logout"
+                app:showAsAction="ifRoom"
+                />
+        </menu>
+
+    </item>
+
+
 
 
 

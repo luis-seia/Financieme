@@ -59,6 +59,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.3.0')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
+    implementation 'io.github.medyo:android-about-page:2.0.0'
 
 
 
