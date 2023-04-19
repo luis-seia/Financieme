@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/ic_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item android:id="@+id/ic_transicoes"
+        android:icon="@drawable/ic_transacoes"
+        android:title="Transicoes" />
+    <item android:id="@+id/ic_add"
+        android:icon="@drawable/ic_add"
+        android:title="Nova transicao" />
+
+    <item android:id="@+id/ic_debitos"
+        android:icon="@drawable/ic_debitos"
+        android:title="Debitos" />
+    <item android:id="@+id/ic_aprender"
+        android:icon="@drawable/ic_aprenda"
+        android:title="Aprenda" />
 
 </menu>

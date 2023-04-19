@@ -60,30 +60,31 @@ public class LoginActivity extends AppCompatActivity {
 
     public void validateUser(User user){
         binding.progressBar.setVisibility(View.VISIBLE);
-        auth = ConfigFirebase.getAuth();
-        auth.signInWithEmailAndPassword(user.getEmail(),user.getSenha())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            binding.progressBar.setVisibility(View.GONE);
-                            openMasterActivity();
-                            finish();
-                        }else{
-                            String excecao = "";
-                            try {
-                                throw   task.getException();
-                            }catch (FirebaseAuthInvalidCredentialsException | FirebaseAuthInvalidUserException e){
-                                excecao = "Email ou senhas invalidos";
-                            } catch (Exception e) {
-                                excecao = "erro ao efectuar Login";
-                                e.printStackTrace();
-                            }
-                            Toast.makeText(LoginActivity.this, excecao, Toast.LENGTH_SHORT).show();
-                            binding.progressBar.setVisibility(View.GONE);
-                        }
-                    }
-                });
+        //auth = ConfigFirebase.getAuth();
+        openMasterActivity();
+//        auth.signInWithEmailAndPassword(user.getEmail(),user.getSenha())
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if(task.isSuccessful()){
+//                            binding.progressBar.setVisibility(View.GONE);
+//                            openMasterActivity();
+//                            finish();
+//                        }else{
+//                            String excecao = "";
+//                            try {
+//                                throw   task.getException();
+//                            }catch (FirebaseAuthInvalidCredentialsException | FirebaseAuthInvalidUserException e){
+//                                excecao = "Email ou senhas invalidos";
+//                            } catch (Exception e) {
+//                                excecao = "erro ao efectuar Login";
+//                                e.printStackTrace();
+//                            }
+//                            Toast.makeText(LoginActivity.this, excecao, Toast.LENGTH_SHORT).show();
+//                            binding.progressBar.setVisibility(View.GONE);
+//                        }
+//                    }
+//                });
     }
 
     public void openMasterActivity(){

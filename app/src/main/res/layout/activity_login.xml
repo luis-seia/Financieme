@@ -48,10 +48,12 @@
         android:hint="password"
         android:inputType="textPassword"
         android:padding="10dp"
+        android:textColorHint="#757575"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editLoginEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/editLoginEmail"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/buttonLogin"
