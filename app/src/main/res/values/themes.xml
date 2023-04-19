@@ -3,7 +3,7 @@
     <style name="Theme.Financieme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/azulfundo</item>
-        <item name="colorPrimaryVariant">@color/azulescuro</item>
+        <item name="colorPrimaryVariant">@color/azulfundo</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/azulfundo</item>

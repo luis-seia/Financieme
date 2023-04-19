@@ -31,6 +31,7 @@ import mz.ac.luis.seia.finacieme.view.fragment.TransictionsFragment;
 public class MasterActivity extends AppCompatActivity {
     private ActivityMasterBinding binding;
     private  FirebaseAuth auth;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +40,7 @@ public class MasterActivity extends AppCompatActivity {
         binding = ActivityMasterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-      Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("");
+       toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar );
 
         //Carregar  configuracao do fragment
@@ -111,19 +111,27 @@ public class MasterActivity extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.ic_home:
+                        toolbar.setTitle("Financie.me");
                         fragmentTransaction.replace(R.id.viewPagerager, new HomeFragment()).commit();
+
                         return true;
                     case R.id.ic_add:
+                        toolbar.setTitle("Operações");
                         fragmentTransaction.replace(R.id.viewPagerager, new NewTransictionFragment()).commit();
+
                         return true;
                     case R.id.ic_aprender:
+                        toolbar.setTitle("Aprenda");
                         fragmentTransaction.replace(R.id.viewPagerager, new LearnFragment()).commit();
                         return true;
                     case R.id.ic_debitos:
+                        toolbar.setTitle("Debitos");
                         fragmentTransaction.replace(R.id.viewPagerager, new DebitFragment()).commit();
                         return true;
                     case R.id.ic_transicoes:
+                        toolbar.setTitle("Transacoes");
                         fragmentTransaction.replace(R.id.viewPagerager, new TransictionsFragment()).commit();
+                        toolbar.setCollapseIcon(R.drawable.ic_transacoes);
                         return true;
 
                 }
