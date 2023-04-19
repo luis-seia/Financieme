@@ -40,7 +40,7 @@ public class MasterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
       Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Financie.me");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar );
 
         //Carregar  configuracao do fragment
