@@ -73,7 +73,7 @@ public class MasterActivity extends AppCompatActivity {
                 break;
             case R.id.menu_sobre:
                 fragmentTransaction.replace(R.id.viewPagerager, new AboutAppFragment()).commit();
-                toolbar.setTitle("Sobre");break;
+                toolbar.setTitle(R.string.sobre);break;
             case R.id.menu_definicoes:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://luis-seia.github.io/Politica-de-privacidade/")));break;
             case R.id.menu_suporte:
@@ -113,25 +113,25 @@ public class MasterActivity extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.ic_home:
-                        toolbar.setTitle("Financie.me");
+                        toolbar.setTitle(R.string.app_name);
                         fragmentTransaction.replace(R.id.viewPagerager, new HomeFragment()).commit();
 
                         return true;
                     case R.id.ic_add:
-                        toolbar.setTitle("Operações");
+                        toolbar.setTitle(R.string.operacoes);
                         fragmentTransaction.replace(R.id.viewPagerager, new NewTransictionFragment()).commit();
 
                         return true;
                     case R.id.ic_aprender:
-                        toolbar.setTitle("Aprenda");
+                        toolbar.setTitle(R.string.aprender);
                         fragmentTransaction.replace(R.id.viewPagerager, new LearnFragment()).commit();
                         return true;
                     case R.id.ic_debitos:
-                        toolbar.setTitle("Debitos");
+                        toolbar.setTitle(R.string.transicoes);
                         fragmentTransaction.replace(R.id.viewPagerager, new DebitFragment()).commit();
                         return true;
                     case R.id.ic_transicoes:
-                        toolbar.setTitle("Transacoes");
+                        toolbar.setTitle(R.string.operacoes);
                         fragmentTransaction.replace(R.id.viewPagerager, new TransictionsFragment()).commit();
                         toolbar.setCollapseIcon(R.drawable.ic_transacoes);
                         return true;

@@ -1,13 +1,9 @@
 <resources>
     <string name="app_name">Financie.me</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
     <string name="home">Home</string>
-    <string name="trasicoes">Transações</string>
+    <string name="transicoes">Transações</string>
     <string name="operacoes">Operações</string>
     <string name="debitos">Debitos</string>
     <string name="Politicaprivacidade">Politica de privacidade</string>
