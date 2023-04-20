@@ -5,19 +5,19 @@
     <item android:id="@+id/more" android:icon="@drawable/ic_more" android:title="" app:showAsAction="always">
         <menu>
             <item android:id="@+id/menu_definicoes"
-                android:title="Politica de privacidade"
+                android:title="@string/Politicaprivacidade"
                 android:icon="@drawable/ic_politica"
                 app:showAsAction="ifRoom"
                 />
 
             <item android:id="@+id/menu_suporte"
-                android:title="Suporte"
+                android:title="@string/suporte"
                 android:icon="@drawable/ic_menu_servicos"
                 app:showAsAction="ifRoom"
                 />
 
             <item android:id="@+id/menu_sobre"
-                android:title="Sobre"
+                android:title="@string/sobre"
                 android:icon="@drawable/ic_baseline_info_24"
                 app:showAsAction="ifRoom"
                 />

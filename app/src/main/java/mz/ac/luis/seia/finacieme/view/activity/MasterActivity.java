@@ -43,6 +43,7 @@ public class MasterActivity extends AppCompatActivity {
        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar );
 
+
         //Carregar  configuracao do fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -71,14 +72,15 @@ public class MasterActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.menu_sobre:
-                fragmentTransaction.replace(R.id.viewPagerager, new AboutAppFragment()).commit();break;
+                fragmentTransaction.replace(R.id.viewPagerager, new AboutAppFragment()).commit();
+                toolbar.setTitle("Sobre");break;
             case R.id.menu_definicoes:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://luis-seia.github.io/Politica-de-privacidade/")));break;
             case R.id.menu_suporte:
                 Intent intent = new Intent (Intent.ACTION_SEND);
-                intent.putExtra(intent.EXTRA_EMAIL, new String[]{"luis.seia@gmail.com"});
+                intent.putExtra(intent.EXTRA_EMAIL, new String[]{"suporte.financie.me.@gmail.com"});
                 intent.putExtra(intent.EXTRA_SUBJECT, "Relatar problema");
-                intent.putExtra(intent.EXTRA_TEXT, "Mensagem automatica");
+                intent.putExtra(intent.EXTRA_TEXT, "Escreva o problema");
                 intent.setType("message/rfc822");
                 startActivity(intent);break;
 
