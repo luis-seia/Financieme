@@ -10,6 +10,7 @@
     <color name="loginBkColor">#f0f0f0</color>
     <color name="darkgray">#a9a9a9 </color>
     <color name="verdinho">#113F1A</color>
+    <color name="cianBack">#ADC7DF</color>
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>

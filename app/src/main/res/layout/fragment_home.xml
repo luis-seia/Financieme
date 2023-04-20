@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        app:cardBackgroundColor="@color/ic_launcher_background"
+        app:cardBackgroundColor="@color/cianBack"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -30,19 +30,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Saldo geral"
-                android:textColor="@color/black"
-                android:textSize="32sp"
+                android:textColor="@color/azulmedio"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewDebitoGeral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:text="0. 00 MZN"
-                android:textColor="@color/verdinho"
-                android:textSize="18sp" />
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -51,9 +52,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        app:cardBackgroundColor="@color/ic_launcher_background"
+        app:cardBackgroundColor="@color/cianBack"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -71,29 +72,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Debito geral"
-                android:textColor="@color/black"
-                android:textSize="32sp"
+                android:textColor="@color/azulmedio"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewContas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:text="0. 00 MZN"
-                android:textColor="@color/verdinho"
-                android:textSize="18sp" />
+                android:text="- 0. 00 MZN"
+                android:textColor="#E02424"
+                android:textSize="28sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        app:cardBackgroundColor="@color/ic_launcher_background"
+        app:cardBackgroundColor="@color/cianBack"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +107,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
             android:orientation="vertical">
 
             <TextView
@@ -111,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Minhas contas"
-                android:textColor="@color/black"
+                android:textColor="@color/azulmedio"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -124,12 +128,82 @@
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
-                    android:drawableLeft=""
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_porco"
+                    android:drawablePadding="5dp"
                     android:text="Conta incial"
                     android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0. 00 MZN"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonGerirContas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="Gerir contas" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@color/cianBack"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cartões de credito "
+                android:textColor="@color/azulmedio"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableTop="@drawable/ic_add_card"
+                android:gravity="center"
+
+                android:text="Controle suas carteiras"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Adiconar cartao" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

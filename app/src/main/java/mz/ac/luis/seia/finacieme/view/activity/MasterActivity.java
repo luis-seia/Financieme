@@ -66,7 +66,7 @@ public class MasterActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch (item.getItemId()){
             case R.id.menu_sair:
-                //logoutUser();
+                logoutUser();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
                 break;
