@@ -3,7 +3,7 @@ package mz.ac.luis.seia.finacieme.view.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -14,13 +14,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.databinding.ActivityMasterBinding;
-import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 import mz.ac.luis.seia.finacieme.view.fragment.AboutAppFragment;
 import mz.ac.luis.seia.finacieme.view.fragment.DebitFragment;
 import mz.ac.luis.seia.finacieme.view.fragment.HomeFragment;
@@ -31,7 +31,7 @@ import mz.ac.luis.seia.finacieme.view.fragment.TransictionsFragment;
 public class MasterActivity extends AppCompatActivity {
     private ActivityMasterBinding binding;
     private  FirebaseAuth auth;
-    Toolbar toolbar;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +68,7 @@ public class MasterActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_sair:
                 logoutUser();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
                 break;
             case R.id.menu_sobre:
@@ -118,7 +118,7 @@ public class MasterActivity extends AppCompatActivity {
 
                         return true;
                     case R.id.ic_add:
-                        toolbar.setTitle(R.string.operacoes);
+                        toolbar.setTitle(R.string.transicoes);
                         fragmentTransaction.replace(R.id.viewPagerager, new NewTransictionFragment()).commit();
 
                         return true;
@@ -127,7 +127,7 @@ public class MasterActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.viewPagerager, new LearnFragment()).commit();
                         return true;
                     case R.id.ic_debitos:
-                        toolbar.setTitle(R.string.transicoes);
+                        toolbar.setTitle(R.string.debitos);
                         fragmentTransaction.replace(R.id.viewPagerager, new DebitFragment()).commit();
                         return true;
                     case R.id.ic_transicoes:
