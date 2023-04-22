@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.AttributeSet;
@@ -15,13 +16,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.Adapter;
+import android.widget.LinearLayout;
 
 import com.joanzapata.pdfview.PDFView;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import mz.ac.luis.seia.finacieme.R;
+import mz.ac.luis.seia.finacieme.adapter.LearnAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentLearnBinding;
+import mz.ac.luis.seia.finacieme.model.Artigo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,8 +35,8 @@ import mz.ac.luis.seia.finacieme.databinding.FragmentLearnBinding;
  */
 public class LearnFragment extends Fragment {
     private FragmentLearnBinding binding;
-        // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private ArrayList<Artigo> listaArtigos = new ArrayList<>();
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -40,17 +45,11 @@ public class LearnFragment extends Fragment {
     private String mParam2;
 
     public LearnFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LearnFragment.
-     */
+
+
     // TODO: Rename and change types and number of parameters
     public static LearnFragment newInstance(String param1, String param2) {
         LearnFragment fragment = new LearnFragment();
@@ -87,9 +86,44 @@ public class LearnFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        this.criarArtigos();
+        LearnAdapter learnAdapter = new LearnAdapter(listaArtigos);
+
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         binding.recyclerView.setLayoutManager(linearLayoutManager);
         binding.recyclerView.setHasFixedSize(true);
-        //binding.recyclerView.setAdapter();
+        binding.recyclerView.addItemDecoration(new DividerItemDecoration(getContext() , LinearLayout.VERTICAL));
+        binding.recyclerView.setAdapter(learnAdapter);
+    }
+
+    public void criarArtigos(){
+        Artigo artigo = new Artigo(1, "Administracao financeira");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(2, "Gestao de financas pessoais");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(3, "Estrutura das financas pessoais");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(4, "Orçamento Pessoal ou Familiar");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(5, "Diagnostico da situacao financiera");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(6, "Uso do Crédito e Administração das Dívidas");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(7, "Consumo Planejado e Consciente");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(8, "Poupança e Investimento");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(9, "Planejamento financiero ");
+        listaArtigos.add(artigo);
+
     }
 }
