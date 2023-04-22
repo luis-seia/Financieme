@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.joanzapata.pdfview.PDFView;
@@ -27,6 +28,7 @@ import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.adapter.LearnAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentLearnBinding;
 import mz.ac.luis.seia.finacieme.model.Artigo;
+import mz.ac.luis.seia.finacieme.model.RecyclerItemClickListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,13 +97,30 @@ public class LearnFragment extends Fragment {
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(getContext() , LinearLayout.VERTICAL));
         binding.recyclerView.setAdapter(learnAdapter);
+
+        binding.recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(),
+                        binding.recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        }));
     }
 
     public void criarArtigos(){
         Artigo artigo = new Artigo(1, "Administracao financeira");
-        listaArtigos.add(artigo);
-
-        artigo = new Artigo(2, "Gestao de financas pessoais");
         listaArtigos.add(artigo);
 
         artigo = new Artigo(3, "Estrutura das financas pessoais");
@@ -111,6 +130,9 @@ public class LearnFragment extends Fragment {
         listaArtigos.add(artigo);
 
         artigo = new Artigo(5, "Diagnostico da situacao financiera");
+        listaArtigos.add(artigo);
+
+        artigo = new Artigo(2, "Gestao de financas pessoais");
         listaArtigos.add(artigo);
 
         artigo = new Artigo(6, "Uso do Crédito e Administração das Dívidas");
