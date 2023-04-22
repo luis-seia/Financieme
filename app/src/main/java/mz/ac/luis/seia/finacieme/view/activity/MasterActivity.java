@@ -118,7 +118,7 @@ public class MasterActivity extends AppCompatActivity {
 
                         return true;
                     case R.id.ic_add:
-                        toolbar.setTitle(R.string.transicoes);
+                        toolbar.setTitle(R.string.operacoes);
                         fragmentTransaction.replace(R.id.viewPagerager, new NewTransictionFragment()).commit();
 
                         return true;
@@ -131,7 +131,7 @@ public class MasterActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.viewPagerager, new DebitFragment()).commit();
                         return true;
                     case R.id.ic_transicoes:
-                        toolbar.setTitle(R.string.operacoes);
+                        toolbar.setTitle(R.string.transicoes);
                         fragmentTransaction.replace(R.id.viewPagerager, new TransictionsFragment()).commit();
                         toolbar.setCollapseIcon(R.drawable.ic_transacoes);
                         return true;
