@@ -2,13 +2,21 @@ package mz.ac.luis.seia.finacieme.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import mz.ac.luis.seia.finacieme.R;
+import mz.ac.luis.seia.finacieme.databinding.FragmentLearnBinding;
+import mz.ac.luis.seia.finacieme.databinding.FragmentNewTransictionBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,9 +24,9 @@ import mz.ac.luis.seia.finacieme.R;
  * create an instance of this fragment.
  */
 public class NewTransictionFragment extends Fragment {
+    FragmentNewTransictionBinding binding;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -27,18 +35,11 @@ public class NewTransictionFragment extends Fragment {
     private String mParam2;
 
     public NewTransictionFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewTransictionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
+
     public static NewTransictionFragment newInstance(String param1, String param2) {
         NewTransictionFragment fragment = new NewTransictionFragment();
         Bundle args = new Bundle();
@@ -61,6 +62,24 @@ public class NewTransictionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_transiction, container, false);
+        binding = FragmentNewTransictionBinding.inflate(inflater, container, false);
+        // Inflate the layout for this fragment
+        View view = binding.getRoot();
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+        binding.buttonAdicionarReceitas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BlottomSheetReceitaFragment blottomSheetReceitaFragment = new BlottomSheetReceitaFragment();
+                blottomSheetReceitaFragment.show(getFragmentManager(), "");
+            }
+        });
     }
 }

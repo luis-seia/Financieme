@@ -148,7 +148,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/buttonGerirContas"
+                android:id="@+id/buttonAdicionarReceitas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"

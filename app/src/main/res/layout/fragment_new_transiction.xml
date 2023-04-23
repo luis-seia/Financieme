@@ -92,7 +92,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/buttonGerirContas"
+                    android:id="@+id/buttonAdicionarReceitas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -101,7 +101,7 @@
                     android:text="@string/receitas" />
 
                 <Button
-                    android:id="@+id/buttonGerirContas2"
+                    android:id="@+id/ButomAcionarDespesas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -109,7 +109,7 @@
                     android:text="Despesas" />
 
                 <Button
-                    android:id="@+id/buttonGerirContas3"
+                    android:id="@+id/buttonTranferir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -202,7 +202,7 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/buttonAddDebitos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
