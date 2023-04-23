@@ -1,7 +1,7 @@
 package mz.ac.luis.seia.finacieme.view.fragment;
 
 import android.content.Intent;
-import android.net.Uri;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,25 +10,24 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
-import android.widget.Adapter;
+
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
-import com.joanzapata.pdfview.PDFView;
 
-import java.io.File;
+
+
 import java.util.ArrayList;
 
-import mz.ac.luis.seia.finacieme.R;
+
 import mz.ac.luis.seia.finacieme.adapter.LearnAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentLearnBinding;
 import mz.ac.luis.seia.finacieme.model.Artigo;
 import mz.ac.luis.seia.finacieme.model.RecyclerItemClickListener;
+import mz.ac.luis.seia.finacieme.view.activity.PdfViewActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,7 +103,9 @@ public class LearnFragment extends Fragment {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-
+                                Intent intent = new Intent(getActivity(), PdfViewActivity.class);
+                                intent.putExtra("capitulo", position);
+                                startActivity(intent);
                             }
 
                             @Override

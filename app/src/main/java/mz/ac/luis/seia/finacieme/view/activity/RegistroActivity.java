@@ -76,6 +76,7 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if( task.isSuccessful()){
+                    startActivity(new Intent(RegistroActivity.this, MasterActivity.class));
                     finish();
                 }else{
                     String textExcecao = "";
