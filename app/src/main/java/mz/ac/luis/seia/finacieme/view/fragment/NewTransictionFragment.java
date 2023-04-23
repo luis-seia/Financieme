@@ -9,13 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
-import mz.ac.luis.seia.finacieme.R;
-import mz.ac.luis.seia.finacieme.databinding.FragmentLearnBinding;
 import mz.ac.luis.seia.finacieme.databinding.FragmentNewTransictionBinding;
 
 /**
@@ -77,8 +71,16 @@ public class NewTransictionFragment extends Fragment {
         binding.buttonAdicionarReceitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BlottomSheetReceitaFragment blottomSheetReceitaFragment = new BlottomSheetReceitaFragment();
-                blottomSheetReceitaFragment.show(getFragmentManager(), "");
+                BottomSheetReceitaFragment bottomSheetReceitaFragment = new BottomSheetReceitaFragment();
+                bottomSheetReceitaFragment.show(getFragmentManager(), "");
+            }
+        });
+
+        binding.ButomAcionarDespesas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ButtonSheetDespesasFragment buttonSheetDespesasFragment = new ButtonSheetDespesasFragment();
+                buttonSheetDespesasFragment.show(getFragmentManager(), "");
             }
         });
     }

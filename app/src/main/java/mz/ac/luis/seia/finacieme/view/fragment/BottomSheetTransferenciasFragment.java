@@ -8,16 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
 import mz.ac.luis.seia.finacieme.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ButtonSheetDespesasFragment#newInstance} factory method to
+ * Use the {@link BottomSheetTransferenciasFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
+public class BottomSheetTransferenciasFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +26,7 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
     private String mParam1;
     private String mParam2;
 
-    public ButtonSheetDespesasFragment() {
+    public BottomSheetTransferenciasFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +36,11 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ButtonSheetDespesasFragment.
+     * @return A new instance of fragment BottomSheetTransferenciasFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ButtonSheetDespesasFragment newInstance(String param1, String param2) {
-        ButtonSheetDespesasFragment fragment = new ButtonSheetDespesasFragment();
+    public static BottomSheetTransferenciasFragment newInstance(String param1, String param2) {
+        BottomSheetTransferenciasFragment fragment = new BottomSheetTransferenciasFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,6 +61,6 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_button_sheet_despesas, container, false);
+        return inflater.inflate(R.layout.fragment_bottom_sheet_transferencias, container, false);
     }
 }

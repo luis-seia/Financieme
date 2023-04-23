@@ -14,10 +14,10 @@ import mz.ac.luis.seia.finacieme.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlottomSheetReceitaFragment#newInstance} factory method to
+ * Use the {@link BottomSheetReceitaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlottomSheetReceitaFragment extends BottomSheetDialogFragment {
+public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +28,7 @@ public class BlottomSheetReceitaFragment extends BottomSheetDialogFragment {
     private String mParam1;
     private String mParam2;
 
-    public BlottomSheetReceitaFragment() {
+    public BottomSheetReceitaFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +38,11 @@ public class BlottomSheetReceitaFragment extends BottomSheetDialogFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlottomSheetReceitaFragment.
+     * @return A new instance of fragment BottomSheetReceitaFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlottomSheetReceitaFragment newInstance(String param1, String param2) {
-        BlottomSheetReceitaFragment fragment = new BlottomSheetReceitaFragment();
+    public static BottomSheetReceitaFragment newInstance(String param1, String param2) {
+        BottomSheetReceitaFragment fragment = new BottomSheetReceitaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
