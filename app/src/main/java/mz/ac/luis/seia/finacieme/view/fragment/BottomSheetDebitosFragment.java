@@ -14,10 +14,10 @@ import mz.ac.luis.seia.finacieme.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BottomSheetTransferenciasFragment#newInstance} factory method to
+ * Use the {@link BottomSheetDebitosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BottomSheetTransferenciasFragment extends BottomSheetDialogFragment {
+public class BottomSheetDebitosFragment extends BottomSheetDialogFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +28,7 @@ public class BottomSheetTransferenciasFragment extends BottomSheetDialogFragment
     private String mParam1;
     private String mParam2;
 
-    public BottomSheetTransferenciasFragment() {
+    public BottomSheetDebitosFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +38,11 @@ public class BottomSheetTransferenciasFragment extends BottomSheetDialogFragment
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BottomSheetTransferenciasFragment.
+     * @return A new instance of fragment BottomSheetDebitosFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BottomSheetTransferenciasFragment newInstance(String param1, String param2) {
-        BottomSheetTransferenciasFragment fragment = new BottomSheetTransferenciasFragment();
+    public static BottomSheetDebitosFragment newInstance(String param1, String param2) {
+        BottomSheetDebitosFragment fragment = new BottomSheetDebitosFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,6 +63,6 @@ public class BottomSheetTransferenciasFragment extends BottomSheetDialogFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bottom_sheet_transferencias, container, false);
+        return inflater.inflate(R.layout.fragment_bottom_sheet_debitos, container, false);
     }
 }

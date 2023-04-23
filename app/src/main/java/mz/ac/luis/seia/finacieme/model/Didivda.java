@@ -8,6 +8,7 @@ public class Didivda {
     private float juros;
     private double valorPago;
     private double valorEmFalta;
+    private String estado;
 
     public Didivda(String entidade, double valor, String dataContraida, String dataVencimento, float juros, double valorPago, double valorEmFalta) {
         this.entidade = entidade;

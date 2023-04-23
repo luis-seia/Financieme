@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +13,9 @@ import android.view.ViewGroup;
 
 import mz.ac.luis.seia.finacieme.databinding.FragmentNewTransictionBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewTransictionFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class NewTransictionFragment extends Fragment {
     FragmentNewTransictionBinding binding;
-
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -55,7 +51,8 @@ public class NewTransictionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+
         binding = FragmentNewTransictionBinding.inflate(inflater, container, false);
         // Inflate the layout for this fragment
         View view = binding.getRoot();
@@ -81,6 +78,22 @@ public class NewTransictionFragment extends Fragment {
             public void onClick(View view) {
                 ButtonSheetDespesasFragment buttonSheetDespesasFragment = new ButtonSheetDespesasFragment();
                 buttonSheetDespesasFragment.show(getFragmentManager(), "");
+            }
+        });
+
+        binding.buttonTranferir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetTransferenciasFragment bottomSheetTransferenciasFragment = new BottomSheetTransferenciasFragment();
+                bottomSheetTransferenciasFragment.show(getFragmentManager(), "");
+            }
+        });
+
+        binding.buttonAddDebitos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetDebitosFragment bottomSheetDebitosFragment = new BottomSheetDebitosFragment();
+                bottomSheetDebitosFragment.show(getFragmentManager(), "");
             }
         });
     }
