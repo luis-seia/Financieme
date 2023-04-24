@@ -82,6 +82,7 @@ public class MasterActivity extends AppCompatActivity {
                 intent.putExtra(intent.EXTRA_SUBJECT, "Relatar problema");
                 intent.putExtra(intent.EXTRA_TEXT, "Escreva o problema");
                 intent.setType("message/rfc822");
+
                 startActivity(intent);break;
 
         }

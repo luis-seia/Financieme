@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/cianBack"
     android:orientation="vertical"
     tools:context=".view.fragment.ButtonSheetDespesasFragment">
 
@@ -12,7 +13,7 @@
         android:layout_height="3dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:background="@color/darkgray" />
+        android:background="@color/black" />
 
     <EditText
         android:id="@+id/editLoginEmail"
@@ -21,7 +22,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/custum_input"
+        android:background="@drawable/input_bottom_sheet"
         android:drawableLeft="@drawable/ic_edit"
         android:drawablePadding="5dp"
         android:hint="Descricao"
@@ -73,7 +74,7 @@
             android:layout_width="250dp"
             android:layout_height="48dp"
             android:layout_margin="8dp"
-            android:background="@drawable/custum_input"
+            android:background="@drawable/input_bottom_sheet"
             android:contentDescription="@string/receitas" />
     </LinearLayout>
 
@@ -84,7 +85,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/custum_input"
+        android:background="@drawable/input_bottom_sheet"
         android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
         android:drawablePadding="5dp"
         android:hint="Data"
