@@ -74,7 +74,7 @@ public class AboutAppFragment extends Fragment {
                 .setDescription(descricao)
 
                 .addGroup("Entre em contacto")
-                .addEmail("luis.seiax@gmail.com", "Envie um e-mIL ")
+                .addEmail("luis.seiax@gmail.com", "Envie um email ")
                 .addWebsite("https://gitlab.com/users/sign_in", "Acesse nosso site")
 
                 .addGroup("Redes Sociais")
