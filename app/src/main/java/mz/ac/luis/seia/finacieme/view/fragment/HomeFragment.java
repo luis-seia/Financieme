@@ -2,13 +2,25 @@ package mz.ac.luis.seia.finacieme.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+
 import mz.ac.luis.seia.finacieme.R;
+import  mz.ac.luis.seia.finacieme.databinding.FragmentHomeBinding;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +28,7 @@ import mz.ac.luis.seia.finacieme.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    FragmentHomeBinding binding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +74,36 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        // Inflate the layout for this fragment
+        View view = binding.getRoot();
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        createGraphic();
+    }
+
+    public void createGraphic(){
+
+        ArrayList<PieEntry> pieEntries = new ArrayList<>();
+        pieEntries.add(new PieEntry(24545, "Receita"));
+        pieEntries.add(new PieEntry(54545, "Despesa"));
+        pieEntries.add(new PieEntry(35454, "Saldo"));
+
+        PieDataSet pieDataSet = new PieDataSet(pieEntries, "Descricao");
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        pieDataSet.setValueTextSize(13f);
+
+
+        PieData pieData = new PieData(pieDataSet);
+        binding.grafico.setData(pieData);
+        binding.grafico.getDescription().setEnabled(false);
+        binding.grafico.animate();
+
     }
 }

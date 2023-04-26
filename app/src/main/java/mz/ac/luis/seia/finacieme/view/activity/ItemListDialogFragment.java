@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.databinding.FragmentItemListDialogListDialogBinding;
 import mz.ac.luis.seia.finacieme.databinding.FragmentItemListDialogListDialogItemBinding;
 

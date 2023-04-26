@@ -21,11 +21,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.databinding.ActivityMasterBinding;
+import mz.ac.luis.seia.finacieme.view.fragment.LearnFragment;
+import mz.ac.luis.seia.finacieme.view.fragment.NewTransictionFragment;
 import mz.ac.luis.seia.finacieme.view.fragment.AboutAppFragment;
 import mz.ac.luis.seia.finacieme.view.fragment.DebitFragment;
 import mz.ac.luis.seia.finacieme.view.fragment.HomeFragment;
-import mz.ac.luis.seia.finacieme.view.fragment.LearnFragment;
-import mz.ac.luis.seia.finacieme.view.fragment.NewTransictionFragment;
 import mz.ac.luis.seia.finacieme.view.fragment.TransictionsFragment;
 
 public class MasterActivity extends AppCompatActivity {
