@@ -1,4 +1,4 @@
-package mz.ac.luis.seia.finacieme.model;
+package mz.ac.luis.seia.finacieme.adapter;
 
 import android.content.Context;
 import android.view.GestureDetector;

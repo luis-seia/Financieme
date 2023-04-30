@@ -1,5 +1,7 @@
 package mz.ac.luis.seia.finacieme.view.fragment;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,10 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import mz.ac.luis.seia.finacieme.R;
+import mz.ac.luis.seia.finacieme.databinding.FragmentBlottomSheetReceitaBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,9 +22,7 @@ import mz.ac.luis.seia.finacieme.R;
  * create an instance of this fragment.
  */
 public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    FragmentBlottomSheetReceitaBinding binding;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -62,7 +64,15 @@ public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blottom_sheet_receita, container, false);
+        binding = FragmentBlottomSheetReceitaBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+
+        final String[] operacoes = {"Abrir website", "efectuar ligacao", "abrir maps em uma determinada llocation", "abrir camera e tirar fotografia"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, operacoes);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spinnerPagocom.setAdapter(adapter);
+
+        return view;
     }
 }

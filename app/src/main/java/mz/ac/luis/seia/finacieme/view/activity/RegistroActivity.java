@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.databinding.ActivityRegistroBinding;
+import mz.ac.luis.seia.finacieme.helper.Base64Custom;
 import mz.ac.luis.seia.finacieme.model.User;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
@@ -76,7 +77,11 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if( task.isSuccessful()){
-                    startActivity(new Intent(RegistroActivity.this, MasterActivity.class));
+                    String idUser = Base64Custom.codificarBase64(user.getEmail());
+                     user.setIdUser(idUser);
+                     user.saveFromFirebase();
+
+                     startActivity(new Intent(RegistroActivity.this, MasterActivity.class));
                     finish();
                 }else{
                     String textExcecao = "";

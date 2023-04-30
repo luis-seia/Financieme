@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "mz.ac.luis.seia.finacieme"
-        minSdk 21
+        minSdk 25
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -36,6 +36,7 @@ android {
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'androidx.wear.tiles:tiles-material:1.1.0-alpha04'
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
             because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
@@ -58,8 +59,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.5.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
-    implementation platform('com.google.firebase:firebase-bom:31.3.0')
     implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
     implementation 'io.github.medyo:android-about-page:2.0.0'
     implementation 'com.github.barteksc:AndroidPdfViewer:2.3.0'

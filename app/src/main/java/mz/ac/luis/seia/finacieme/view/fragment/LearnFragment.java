@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import mz.ac.luis.seia.finacieme.adapter.LearnAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentLearnBinding;
 import mz.ac.luis.seia.finacieme.model.Artigo;
-import mz.ac.luis.seia.finacieme.model.RecyclerItemClickListener;
+import mz.ac.luis.seia.finacieme.adapter.RecyclerItemClickListener;
 import mz.ac.luis.seia.finacieme.view.activity.PdfViewActivity;
 
 /**

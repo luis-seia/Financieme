@@ -13,5 +13,52 @@
     <string name="receitas">Receitas</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    \
+
+
+    <string-array name="categorias_despesas">
+        <item>Alimentação</item>
+        <item>Transporte</item>
+        <item>Habitação</item>
+        <item>Saúde</item>
+        <item>Educação</item>
+        <item>Entretenimento</item>
+        <item>Viagens</item>
+        <item>Compras</item>
+        <item>Serviços financeiros</item>
+        <item>Doações/Caridade</item>
+        <item>Vestuário</item>
+        <item>Eletrônicos</item>
+        <item>Cuidados pessoais</item>
+        <item>Impostos</item>
+        <item>Seguros</item>
+        <item>Animais de estimação</item>
+        <item>Presentes</item>
+        <item>Investimentos</item>
+        <item>Despesas domésticas</item>
+        <item>Dívidas/Empréstimos</item>
+    </string-array>
+
+    <integer-array name="meu_array_icons">
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+        <item>@drawable/ic_menu_servicos</item>
+    </integer-array>
+
 </resources>
