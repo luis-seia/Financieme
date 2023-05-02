@@ -35,7 +35,7 @@
         <item>Presentes</item>
         <item>Investimentos</item>
         <item>Despesas domésticas</item>
-        <item>Dívidas/Empréstimos</item>
+        Empréstimos
     </string-array>
 
     <integer-array name="meu_array_icons">

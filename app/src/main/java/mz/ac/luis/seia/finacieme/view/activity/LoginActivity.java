@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void validateUser(User user){
         binding.progressBar.setVisibility(View.VISIBLE);
+        openMasterActivity();
         auth = ConfigFirebase.getAuth();
         auth.signInWithEmailAndPassword(user.getEmail(),user.getSenha())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {

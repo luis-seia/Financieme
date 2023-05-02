@@ -1,23 +1,23 @@
 package mz.ac.luis.seia.finacieme.model;
 
-public class Didivda {
+public class Divida {
     private String entidade;
     private double valor;
     private String dataContraida;
     private String dataVencimento;
     private float juros;
     private double valorPago;
-    private double valorEmFalta;
+
     private String estado;
 
-    public Didivda(String entidade, double valor, String dataContraida, String dataVencimento, float juros, double valorPago, double valorEmFalta) {
+    public Divida(String entidade, double valor, String dataContraida, String dataVencimento, float juros, double valorPago) {
         this.entidade = entidade;
         this.valor = valor;
         this.dataContraida = dataContraida;
         this.dataVencimento = dataVencimento;
         this.juros = juros;
         this.valorPago = valorPago;
-        this.valorEmFalta = valorEmFalta;
+
     }
 
     public String getEntidade() {
@@ -68,11 +68,5 @@ public class Didivda {
         this.valorPago = valorPago;
     }
 
-    public double getValorEmFalta() {
-        return valorEmFalta;
-    }
 
-    public void setValorEmFalta(double valorEmFalta) {
-        this.valorEmFalta = valorEmFalta;
-    }
 }

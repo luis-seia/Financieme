@@ -9,12 +9,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.adapter.ArrayAdapterDespesas;
 import mz.ac.luis.seia.finacieme.databinding.FragmentButtonSheetDespesasBinding;
+import mz.ac.luis.seia.finacieme.helper.DataCustom;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,10 +73,13 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
 
 
 
-        String[] valores = getResources().getStringArray(R.array.categorias_despesas);
-        int[] icons = getResources().getIntArray(R.array.meu_array_icons);
-       // ArrayAdapterDespesas adapter = new ArrayAdapterDespesas(getContext(), R.layout.item_spinner_despesas, valores, icons);
+        String[] categoria = getResources().getStringArray(R.array.categorias_despesas);
 
-    //    binding.spinnerCategoriaDespesa.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1,categoria);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        binding.spinnerCategoriaDespesa.setAdapter(adapter);
+
+        binding.editData.setText(DataCustom.currentData());
     }
 }
