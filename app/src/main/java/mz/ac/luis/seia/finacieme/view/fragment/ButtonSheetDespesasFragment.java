@@ -73,9 +73,9 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
 
 
 
-        String[] categoria = getResources().getStringArray(R.array.categorias_despesas);
+        final String[] CATEGORIA = getResources().getStringArray(R.array.categorias_despesas);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1,categoria);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1,CATEGORIA);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         binding.spinnerCategoriaDespesa.setAdapter(adapter);

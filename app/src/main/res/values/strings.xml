@@ -38,27 +38,27 @@
         Empréstimos
     </string-array>
 
-    <integer-array name="meu_array_icons">
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-        <item>@drawable/ic_menu_servicos</item>
-    </integer-array>
+    <string-array name="categorias_receitas">
+        <item>Salário</item>
+        <item>Rendimentos de investimentos</item>
+        <item>Lucros de negócios</item>
+        <item>Aluguel de propriedades</item>
+        <item>Comissões de vendas</item>
+        <item>Honorários profissionais</item>
+        <item>Rendas de royalties</item>
+        <item>Receitas de publicidade</item>
+        <item>Dividendos de ações</item>
+        <item>Ganhos de jogos e apostas</item>
+        <item>Prêmios de loteria</item>
+        <item>Receitas de crowdfunding</item>
+        <item>Vendas de bens usados</item>
+        <item>Pagamentos de patrocínio</item>
+        <item>Vendas de artesanato e produtos feitos à mão</item>
+        <item>Receitas de aluguel de equipamentos</item>
+        <item>Ganhos de fotografia e videografia</item>
+        <item>Receitas de serviços de consultoria</item>
+        <item>Remuneração por serviços de marketing afiliado</item>
+        <item>Ganhos por meio de programas de afiliados de empresas</item>
+    </string-array>
 
 </resources>
