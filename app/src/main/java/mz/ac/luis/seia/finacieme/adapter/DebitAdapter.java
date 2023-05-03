@@ -35,8 +35,7 @@ public class DebitAdapter extends RecyclerView.Adapter<DebitAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             Divida divida = listDividas.get(position);
 
-            holder.dataFim.setText(divida.getDataVencimento());
-            holder.dataInicio.setText(divida.getDataContraida());
+            holder.dataFim.setText("Prazo de pagamento: " +divida.getDataVencimento());
             holder.entidade.setText(divida.getEntidade());
             holder.valorDivida.setText(divida.getValor()+" MZN");
             holder.valorPago.setText(divida.getValorPago()+"/"+divida.getValor());
@@ -62,7 +61,6 @@ public class DebitAdapter extends RecyclerView.Adapter<DebitAdapter.MyViewHolder
         TextView valorDivida;
         TextView valorPago;
         ProgressBar progressBar;
-        TextView dataInicio;
         TextView dataFim;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,7 +69,6 @@ public class DebitAdapter extends RecyclerView.Adapter<DebitAdapter.MyViewHolder
             valorDivida = itemView.findViewById(R.id.textValorDivida);
             valorPago = itemView.findViewById(R.id.textValorPago);
             progressBar  = itemView.findViewById(R.id.progressBarDivida);
-            dataInicio = itemView.findViewById(R.id.textDatainicio);
             dataFim  = itemView.findViewById(R.id.textDataFim);
         }
     }

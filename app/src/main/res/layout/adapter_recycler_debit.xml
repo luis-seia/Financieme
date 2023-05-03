@@ -6,7 +6,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,13 +22,14 @@
                 <TextView
                     android:id="@+id/textEntidade"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:text="Entidade"
                     android:textColor="@color/azulmedio"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textValorDivida"
@@ -48,12 +50,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textDatainicio"
+                    android:id="@+id/textDataFim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="00/00/2000" />
+                    android:text="00/00/2000"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textJuros"
@@ -61,8 +64,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="110dp"
                     android:layout_weight="1"
+                    android:drawableRight="@drawable/ic_baseline_info_24"
                     android:text="Juros"
-                    android:textColor="#F43333" />
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -93,14 +98,6 @@
 
                 </LinearLayout>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textDataFim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:text="00/00/2000" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

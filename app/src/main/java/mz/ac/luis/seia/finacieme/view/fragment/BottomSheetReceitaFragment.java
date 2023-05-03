@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.databinding.FragmentBlottomSheetReceitaBinding;
+import mz.ac.luis.seia.finacieme.helper.DataCustom;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,12 +70,22 @@ public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
         binding = FragmentBlottomSheetReceitaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
-        final String[] operacoes = {"Abrir website", "efectuar ligacao", "abrir maps em uma determinada llocation", "abrir camera e tirar fotografia"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, operacoes);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.spinnerPagocom.setAdapter(adapter);
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        final String[] CATEGORIA = getResources().getStringArray(R.array.categorias_receitas);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1,CATEGORIA);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        binding.spinnerCategoriaReceita.setAdapter(adapter);
+
+        binding.editDataReceita.setText(DataCustom.currentData());
     }
 }
