@@ -1,6 +1,6 @@
 # Financieme
 
-<h1>Introdução<h1>
+<h1>Introdução</h1>
 <p>A privacidade é uma das preocupações mais importantes dos usuários quando se trata de dados pessoais. Com a crescente utilização de aplicativos de gestão
 financeira pessoal, torna-se ainda mais importante garantir que as informações dos usuários sejam coletadas, armazenadas e utilizadas de maneira segura e responsável. N
 este artigo, vamos elaborar uma política de privacidade para um aplicativo de gestão financeira pessoal que respeite a privacidade dos usuários.</p>
