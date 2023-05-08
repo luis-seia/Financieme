@@ -81,7 +81,7 @@
 
         <Spinner
             android:id="@+id/spinnerIcones"
-            android:layout_width="250dp"
+            android:layout_width="196dp"
             android:layout_height="67dp"
             android:layout_margin="8dp"
             android:background="@drawable/custum_input"
@@ -92,30 +92,12 @@
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:text="Selecione um icone"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <SeekBar
-            android:id="@+id/color_seekbar"
-            android:layout_width="170dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:max="9" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mudar  a cor  do icone" />
     </LinearLayout>
 
     <Button

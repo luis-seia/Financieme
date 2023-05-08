@@ -15,11 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.database.DatabaseReference;
@@ -31,12 +33,14 @@ import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.adapter.IconSpinnerAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentBottomSheetCartaoBinding;
 import mz.ac.luis.seia.finacieme.databinding.FragmentBottomSheetDebitosBinding;
+import mz.ac.luis.seia.finacieme.helper.CustomItem;
+import mz.ac.luis.seia.finacieme.model.Carteira;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
 
 public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
     FragmentBottomSheetCartaoBinding binding;
-
+    ArrayList<CustomItem> customItems;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -77,85 +81,57 @@ public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        List<Drawable> icons = new ArrayList<>();
-        ArrayAdapter<Drawable> adapter2 = new ArrayAdapter<Drawable>(getContext(), android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        icons.add(getDrawable(getContext(),R.drawable.ic_card));
-        icons.add(getDrawable(getContext(),R.drawable.ic_porco));
-        icons.add(getDrawable(getContext(),R.drawable.ic_account_balance));
-        icons.add(getDrawable(getContext(),R.drawable.ic_ccount_));
+        customItems = getCustomItems();
+        IconSpinnerAdapter adapter = new IconSpinnerAdapter(getContext(), customItems);
 
-        IconSpinnerAdapter adapter = new IconSpinnerAdapter(getContext(), icons);
 
-        binding.spinnerIcones.setAdapter(adapter);
+        if(customItems !=null){
+            binding.spinnerIcones.setAdapter(adapter);
+        }
 
-         final int[] COLORS = {
-                Color.parseColor("#FF0000"), // Vermelho
-                Color.parseColor("#FFA500"), // Laranja
-                Color.parseColor("#FFFF00"), // Amarelo
-                Color.parseColor("#008000"), // Verde
-                Color.parseColor("#0000FF"), // Azul
-                Color.parseColor("#4B0082"), // Índigo
-                Color.parseColor("#EE82EE"), // Violeta
-                Color.parseColor("#000000"), // Preto
-                Color.parseColor("#FFC0CB"), // Rosa
-                Color.parseColor("#800000"), // Borgonha
-                Color.parseColor("#FF6347"), // Tomate
-                Color.parseColor("#FFD700"), // Ouro
-                Color.parseColor("#FF8C00"), // Escarlate
-                Color.parseColor("#00FFFF"), // Ciano
-                Color.parseColor("#800080"), // Roxo
-                Color.parseColor("#00FF7F"), // Primavera verde
-                Color.parseColor("#A9A9A9"), // Cinza
-                Color.parseColor("#D2B48C"), // Marrom
-                Color.parseColor("#48D1CC"), // Turquesa
-                Color.parseColor("#8FBC8F"), // Verde mar
-                Color.parseColor("#4682B4"), // Azul aço
-                Color.parseColor("#ADFF2F"), // Verde lima
-                Color.parseColor("#F08080"), // Rosa claro
-                Color.parseColor("#B0C4DE"), // Azul claro
-                Color.parseColor("#FFE4C4"), // Bege
-                Color.parseColor("#FF69B4"), // Rosa profundo
-                Color.parseColor("#7B68EE")};  // Azul ardósia
-
-        binding.colorSeekbar.setMax(COLORS.length-1);
-        binding.colorSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        binding.buttonSalvarCartao.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                int colorIndex = progress % COLORS.length;
-                int color = COLORS[colorIndex];
-                Drawable selectedIcon = (Drawable)  binding.spinnerIcones.getSelectedItem();
-                selectedIcon.setColorFilter(color, PorterDuff.Mode.SRC_IN);
-                binding.spinnerIcones.setSelection(binding.spinnerIcones.getSelectedItemPosition());
+            public void onClick(View view) {
+                if(!binding.ediSaldod.getText().toString().isEmpty()){
+                    if(!binding.editNome.getText().toString().isEmpty()){
+                        try{
+                            double saldo = Double.parseDouble(binding.ediSaldod.getText().toString());
+                            String nome = binding.editNome.getText().toString();
+                            CustomItem customItem = (CustomItem) binding.spinnerIcones.getSelectedItem();
+                            Drawable icon = getDrawable(getContext(),customItem.getSpinnerIconImage());
+                            String tipo = binding.radioButtonCartao.isChecked()? "cartao":"conta";
+                            Carteira carteira = new Carteira(nome,saldo,tipo,icon);
+                            carteira.salvar();
+                            dismiss();
+                            Toast.makeText(getContext(), "salvo Com sucesso", Toast.LENGTH_SHORT).show();
+                        }catch (NumberFormatException e){
+                            Toast.makeText(getContext(), "insira um valor valido", Toast.LENGTH_SHORT).show();
+                        }
 
 
-                binding.buttonSalvarCartao.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        binding.ediSaldod.getText().toString();
-                        binding.editNome.getText().toString();
-                        Drawable selectedIcon = (Drawable)  binding.spinnerIcones.getSelectedItem();
-                        Bitmap bitmap = ((BitmapDrawable) selectedIcon).getBitmap();
-                        // cria uma referência ao local onde o Bitmap será armazenado no Firebase Storage
-                        DatabaseReference firebase = ConfigFirebase.getFirebaseDataBase().child("icons").child("icone_" + System.currentTimeMillis() + ".png");;
-
+                    }else{
+                        Toast.makeText(getContext(), "Preencha o nome do cartao", Toast.LENGTH_SHORT).show();
                     }
-                });
-
-
-            }
-
-            
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
+                }else {
+                    Toast.makeText(getContext(), "Preencha o valor do saldo disponivel", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+
+    private ArrayList<CustomItem> getCustomItems() {
+        customItems = new ArrayList<>();
+        customItems.add(new CustomItem("Mpesa",R.drawable.mpesa));
+        customItems.add(new CustomItem("BNI",R.drawable.bni));
+        customItems.add(new CustomItem("My money",R.drawable.my_money));
+        customItems.add(new CustomItem("Ponto 24",R.drawable.ponto_24));
+        customItems.add(new CustomItem("Standard Bank",R.drawable.standard));
+        customItems.add(new CustomItem("Confre",R.drawable.ic_porco));
+        customItems.add(new CustomItem("Outros",R.drawable.ic_account_balance));
+        customItems.add(new CustomItem("Reserva",R.drawable.ic_ccount_));
+        customItems.add(new CustomItem("Outras Carteiras",R.drawable.ic_card));
+        customItems.add(new CustomItem("BNI",R.drawable.bni));
+        return customItems;
     }
 
     private Drawable getDrawable(Context context, int resId) {
