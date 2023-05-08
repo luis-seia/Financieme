@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import mehdi.sakout.aboutpage.AboutPage;
 import mehdi.sakout.aboutpage.Element;
+import mz.ac.luis.seia.finacieme.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,13 +65,14 @@ public class AboutAppFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // force enable bright mode
-      String descricao = "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. " +
-                "Lorem ipsum may be used as a placeholder before final copy is availabl";
+      final String descricao = "Acreditamos que o gerenciamento financeiro pessoal deve ser fácil e acessível para todos. Por isso, " +
+              "nosso aplicativo oferece uma variedade de recursos para ajudar os usuários a monitorar suas despesas, planejar seus orçamentos e acompanhar seus investimentos." +
+                " Esperamos que você aproveite nosso aplicativo e se beneficie de suas funcionalidades. Se tiver alguma dúvida ou feedback, não hesite em nos contatar.";
       Element versao = new Element();
        versao.setTitle(" Versao 1.0");
 
        return new AboutPage(getContext())
-
+               .setImage(R.mipmap.ic_launcher_round)
                 .setDescription(descricao)
 
                 .addGroup("Entre em contacto")

@@ -9,7 +9,7 @@
         android:id="@+id/bnve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/back_op"
+        android:background="@color/white"
         app:itemIconTint="@color/azulPrincipal"
         app:itemTextColor="@color/azulPrincipal"
         app:menu="@menu/menu_navigation" />

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import mz.ac.luis.seia.finacieme.R;
@@ -34,16 +35,17 @@ public class DebitAdapter extends RecyclerView.Adapter<DebitAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             Divida divida = listDividas.get(position);
+            DecimalFormat decimalFormat = new DecimalFormat("0.##");
 
-            holder.dataFim.setText("Prazo de pagamento: " +divida.getDataVencimento());
+            holder.dataFim.setText(divida.getDataVencimento());
             holder.entidade.setText(divida.getEntidade());
-            holder.valorDivida.setText(divida.getValor()+" MZN");
-            holder.valorPago.setText(divida.getValorPago()+"/"+divida.getValor());
+            holder.valorDivida.setText(decimalFormat.format(divida.getValor())+" MZN");
+            holder.valorPago.setText(decimalFormat.format(divida.getValorPago())+"/"+decimalFormat.format(divida.getValor()));
 
             int progresso = divida.getValorPago()==0? 0 : (int) ((divida.getValorPago() / divida.getValor()) * 100);
 
             holder.progressBar.setProgress(progresso);
-            holder.taxaDejuro.setText("juros: "+divida.getJuros()+ " %");
+            holder.taxaDejuro.setText(""+divida.getJuros()+ " %");
 
 
     }

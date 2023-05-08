@@ -15,6 +15,9 @@ public class User {
     private Double saldoTotal = 0.00;
     private Double debitoTotal = 0.00;
 
+    public User() {
+    }
+
     public Double getSaldoTotal() {
         return saldoTotal;
     }

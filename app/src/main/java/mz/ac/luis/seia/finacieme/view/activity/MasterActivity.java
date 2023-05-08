@@ -48,7 +48,6 @@ public class MasterActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.viewPagerager, new HomeFragment()).commit(); // fragment default
-
         ConfigBottomNavegationView(); //chamar metodo para configuracao
 
     }
@@ -57,7 +56,6 @@ public class MasterActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
-
         return true;
     }
 
@@ -75,7 +73,7 @@ public class MasterActivity extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.viewPagerager, new AboutAppFragment()).commit();
                 toolbar.setTitle(R.string.sobre);break;
             case R.id.menu_definicoes:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://luis-seia.github.io/Politica-de-privacidade/")));break;
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://luis-seia.github.io/Financieme/")));break;
             case R.id.menu_suporte:
                 Intent intent = new Intent (Intent.ACTION_SEND);
                 intent.putExtra(intent.EXTRA_EMAIL, new String[]{"suporte.financie.me.@gmail.com"});
@@ -84,7 +82,6 @@ public class MasterActivity extends AppCompatActivity {
                 intent.setType("message/rfc822");
 
                 startActivity(intent);break;
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -100,7 +97,6 @@ public class MasterActivity extends AppCompatActivity {
    private void ConfigBottomNavegationView(){
        BottomNavigationView bottomNavigationView = findViewById(R.id.bnve);
         habilityNavegation(bottomNavigationView);
-
    }
 
   public void habilityNavegation(BottomNavigationView view){

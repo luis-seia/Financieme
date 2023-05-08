@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
     android:orientation="vertical"
     tools:context=".view.fragment.BottomSheetCartaoFragment">
 
@@ -15,21 +16,6 @@
         android:background="@color/black" />
 
     <EditText
-        android:id="@+id/ediSaldod"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/custum_input"
-        android:drawableLeft="@drawable/ic_debitos"
-        android:drawablePadding="5dp"
-        android:hint="Descricao"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textSize="14sp" />
-
-    <EditText
         android:id="@+id/editNome"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -39,17 +25,105 @@
         android:background="@drawable/custum_input"
         android:drawableLeft="@drawable/ic_edit"
         android:drawablePadding="5dp"
-        android:hint="Descricao"
+        android:hint="Nome do cartao"
         android:inputType="text"
         android:padding="10dp"
         android:textSize="14sp" />
 
-    <Spinner
-        android:id="@+id/spinnerCategoriaDespesa"
-        android:layout_width="250dp"
+    <EditText
+        android:id="@+id/ediSaldod"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/custum_input"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:contentDescription="@string/receitas" />
+        android:drawableLeft="@drawable/ic_debitos"
+        android:drawablePadding="5dp"
+        android:hint="Saldo"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonCartao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:checked="true"
+                android:text="Cartao de Credito" />
+
+            <RadioButton
+                android:id="@+id/radioButtonConta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Conta" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinnerIcones"
+            android:layout_width="250dp"
+            android:layout_height="67dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/custum_input"
+            android:contentDescription="@string/receitas"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="Selecione um icone"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <SeekBar
+            android:id="@+id/color_seekbar"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:max="9" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mudar  a cor  do icone" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonSalvarCartao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
+        android:text="Salvar" />
 
 </LinearLayout>

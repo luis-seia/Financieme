@@ -82,4 +82,8 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
 
         binding.editData.setText(DataCustom.currentData());
     }
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }

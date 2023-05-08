@@ -95,5 +95,18 @@ public class NewTransictionFragment extends Fragment {
                 bottomSheetDebitosFragment.show(getFragmentManager(), "");
             }
         });
+
+        binding.buttonAdicionarCartao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetCartaoFragment bottomSheetCartaoFragment = new BottomSheetCartaoFragment();
+                bottomSheetCartaoFragment.show(getFragmentManager(), "4");
+            }
+        });
+    }
+
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

@@ -1,5 +1,14 @@
 package mz.ac.luis.seia.finacieme.model;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Date;
+
+import mz.ac.luis.seia.finacieme.helper.Base64Custom;
+import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
+
 public class Divida {
     private String entidade;
     private double valor;
@@ -7,8 +16,10 @@ public class Divida {
     private String dataVencimento;
     private float juros;
     private double valorPago;
-
     private String estado;
+    private String key;
+
+
 
     public Divida(String entidade, double valor, String dataContraida, String dataVencimento, float juros, double valorPago) {
         this.entidade = entidade;
@@ -18,6 +29,25 @@ public class Divida {
         this.juros = juros;
         this.valorPago = valorPago;
 
+    }
+
+    public Divida() {
+    }
+
+    public Divida(String entidade, double valor, String dataContraida, String dataVencimento, float juros) {
+        this.entidade = entidade;
+        this.valor = valor;
+        this.dataContraida = dataContraida;
+        this.dataVencimento = dataVencimento;
+        this.juros = juros;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getEntidade() {
@@ -68,5 +98,15 @@ public class Divida {
         this.valorPago = valorPago;
     }
 
+    public void salvar(){
+        FirebaseAuth auth = ConfigFirebase.getAuth();
+        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+        DatabaseReference firebase = ConfigFirebase.getFirebaseDataBase();
+        firebase.child("divida")
+                .child(userId)
+                .push()
+                .setValue(this);
 
+
+    }
 }

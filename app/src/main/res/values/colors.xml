@@ -22,9 +22,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name = "azulPrincipal">#202547</color>
+    <color name = "azulPrincipal">#00004a</color>
     <color name = "azulescuro">#151626</color>
-    <color name="azulfundo">#212D56</color>
-    <color name="azulmedio">#2a356a</color>
+    <color name="azulfundo">#1E90FF</color>
+    <color name="azulmedio">#00004a</color>
     <color name="meioverde">#2F4F4F</color>
 </resources>

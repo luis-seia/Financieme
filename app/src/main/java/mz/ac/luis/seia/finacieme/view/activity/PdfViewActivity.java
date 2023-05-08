@@ -22,7 +22,7 @@ public class PdfViewActivity extends AppCompatActivity {
 
         try{
             pdfView.fromAsset("capitulo"+capitulo+".pdf")
-                    .pages(0, 2) // all pages are displayed by default
+
                     .enableSwipe(true) // allows to block changing pages using swipe
                     .swipeHorizontal(false)
                     .enableDoubletap(true)

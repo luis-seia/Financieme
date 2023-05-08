@@ -9,6 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FAFAFA"
+        android:backgroundTint="#E6F2F9"
         tools:context=".view.fragment.NewTransictionFragment">
 
         <androidx.cardview.widget.CardView
@@ -18,11 +20,13 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            app:cardBackgroundColor="@color/cianBack"
-            app:cardCornerRadius="10dp"
+            android:background="@drawable/shadow"
+            app:cardElevation="16dp"
+            android:elevation="16dp"
+            app:cardCornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView32">
+            app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,7 +40,7 @@
                     android:id="@+id/textView12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cartões de credito "
+                    android:text="Carteiras"
                     android:textColor="@color/azulmedio"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -45,7 +49,6 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:drawableTop="@drawable/ic_add_card"
                     android:gravity="center"
 
@@ -53,11 +56,11 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/buttonAdicionarCartao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Adiconar cartao" />
+                    android:text="Adiconar" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -67,9 +70,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            app:cardBackgroundColor="@color/cianBack"
-            app:cardCornerRadius="10dp"
+            android:background="@drawable/shadow"
+            app:cardElevation="16dp"
+            android:elevation="16dp"
+            app:cardCornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -86,7 +92,7 @@
                     android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Adicionar transições"
+                    android:text="Adicionar transações"
                     android:textColor="@color/azulmedio"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -96,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="15dp"
                     android:text="@string/receitas" />
 
@@ -114,51 +120,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="5dp"
                     android:text="Transferencias" />
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView32"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            app:cardBackgroundColor="@color/cianBack"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView77"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Carteiras e contas"
-                    android:textColor="@color/azulmedio"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/AdicionarContas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:text="Adicionar contas" />
-
-            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -168,7 +134,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@color/cianBack"
+            app:cardCornerRadius="5dp"
+            android:background="@drawable/shadow"
+            app:cardElevation="16dp"
+            android:elevation="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -194,7 +163,6 @@
                     android:id="@+id/textView17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:drawableTop="@drawable/ic_baseline_credit_card_off_24"
                     android:gravity="center"
 
@@ -205,7 +173,9 @@
                     android:id="@+id/buttonAddDebitos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
                     android:text="Adiconar divida" />
 
             </LinearLayout>

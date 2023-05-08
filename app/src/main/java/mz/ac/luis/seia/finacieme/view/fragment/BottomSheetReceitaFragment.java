@@ -88,4 +88,9 @@ public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
 
         binding.editDataReceita.setText(DataCustom.currentData());
     }
+
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }
