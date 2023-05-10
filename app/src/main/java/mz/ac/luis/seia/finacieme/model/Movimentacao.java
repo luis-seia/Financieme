@@ -82,7 +82,7 @@ public class Movimentacao {
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
         DatabaseReference firebase = ConfigFirebase.getFirebaseDataBase();
         String mesAno = DateCustom.mesAno(data);
-        firebase.child("movintacao")
+        firebase.child("movimentacao")
                 .child(userId)
                 .child(mesAno)
                 .push()
