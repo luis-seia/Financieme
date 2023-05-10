@@ -4,13 +4,22 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textViewDataMov"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/black" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/TextViewTitulo"
+            android:id="@+id/textViewTituloMov"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -22,7 +31,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textViewValor"
+            android:id="@+id/textViewValorMov"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -41,7 +50,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textViewCategoria"
+            android:id="@+id/textViewCategoriaMov"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -51,7 +60,7 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/TextviewConta"
+            android:id="@+id/textviewContaMov"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"

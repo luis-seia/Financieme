@@ -3,6 +3,7 @@ package mz.ac.luis.seia.finacieme.view.fragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -53,6 +54,14 @@ public class TransictionsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    //
+    @Override
     public void onStart() {
         super.onStart();
         // Mantém os dados sincronizados, mesmo quando o dispositivo estiver offline
