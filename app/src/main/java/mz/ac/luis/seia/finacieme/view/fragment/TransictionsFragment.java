@@ -15,6 +15,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.ArrayList;
 
@@ -36,6 +39,7 @@ public class TransictionsFragment extends Fragment {
     MovimentacaoAdapter movimentacaoAdapter;
     private Double  saldoTotal  ;
     private Double despesaTotal;
+    private String mesAno;
     private ValueEventListener valueEventListenerUser;
     private ValueEventListener valueEventListenerMov;
     FragmentTransictionsBinding binding;
@@ -44,8 +48,9 @@ public class TransictionsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        movimentacaoRef = firebaseRef.child("movimentacao").child(userId);
+        movimentacaoRef = firebaseRef.child("movimentacao").child(userId).child(mesAno);
         userRef = firebaseRef.child("usuarios").child(userId);
+        configCalendar();
     }
 
     @Override
@@ -70,6 +75,7 @@ public class TransictionsFragment extends Fragment {
         movimentacaoRef.keepSynced(true);
         userRef.keepSynced(true);
         recuperarMovimentacao();
+        recuperarTotal();
     }
 
     public  void recuperarMovimentacao(){
@@ -104,6 +110,23 @@ public class TransictionsFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+    }
+
+    public void configCalendar(){
+        CalendarDay dataAcual = binding.calendarView.getCurrentDate();
+        String mes = String.format("%02d",(dataAcual.getMonth()+1));
+        mesAno = String.valueOf(mes +""+ dataAcual.getYear());
+
+        binding.calendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
+            @Override
+            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                String mes = String.format("%02d",(date.getMonth()+1));
+                mesAno = String.valueOf(mes+ ""+ date.getYear());
+                movimentacaoRef.removeEventListener(valueEventListenerMov);
+                recuperarMovimentacao();
             }
         });
     }
