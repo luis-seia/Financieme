@@ -43,6 +43,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="18dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Categoria"
             android:textColor="@color/azulPrincipal"
             android:textSize="18sp"
@@ -50,10 +51,10 @@
 
         <Spinner
             android:id="@+id/spinnerCategoriaReceita"
-            android:layout_width="250dp"
-            android:background="@drawable/custum_input"
-            android:layout_height="48dp"
+            android:layout_width="211dp"
+            android:layout_height="63dp"
             android:layout_margin="8dp"
+            android:background="@drawable/custum_input"
             android:contentDescription="@string/receitas" />
     </LinearLayout>
 
@@ -69,35 +70,57 @@
             android:layout_marginStart="7dp"
             android:layout_marginTop="18dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Conta a receber"
             android:textColor="@color/azulPrincipal"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/spinnerPagocom"
-            android:layout_width="250dp"
+            android:id="@+id/spinnerContaAreceber"
+            android:layout_width="211dp"
 
-            android:layout_height="48dp"
+            android:layout_height="60dp"
             android:layout_margin="8dp"
             android:background="@drawable/custum_input"
             android:contentDescription="@string/receitas" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/editDataReceita"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/custum_input"
-        android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
-        android:drawablePadding="5dp"
-        android:hint="Data"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textSize="14sp" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editDataReceita"
+            android:layout_width="169dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/custum_input"
+            android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+            android:drawablePadding="5dp"
+            android:hint="Data"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editValor"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/custum_input"
+            android:drawableLeft="@drawable/ic_debitos"
+            android:drawablePadding="5dp"
+            android:hint="Valor"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textSize="14sp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonaSalvarDespesa"

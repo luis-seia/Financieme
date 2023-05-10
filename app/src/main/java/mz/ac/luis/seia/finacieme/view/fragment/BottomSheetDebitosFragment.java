@@ -15,6 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
@@ -35,6 +36,8 @@ public class BottomSheetDebitosFragment extends BottomSheetDialogFragment {
     FragmentBottomSheetDebitosBinding binding;
     private DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDataBase();
     private FirebaseAuth auth = ConfigFirebase.getAuth();
+    DatabaseReference userRef;
+    private ValueEventListener valueEventListenerUser;
     private Double debitoTotal;
 
 
@@ -98,15 +101,20 @@ public class BottomSheetDebitosFragment extends BottomSheetDialogFragment {
                                         double montante = Double.parseDouble(binding.editValor.getText().toString());
                                         float juros = Float.parseFloat(binding.editTaxaDeJuros.getText().toString());
                                         Divida divida = new Divida(entidade,montante,dataContracao,dataVencimento,juros);
-
                                         double dividaActualizada = montante + debitoTotal;
                                         atualizarDivida(dividaActualizada);
                                         divida.salvar();
-                                        clear();
-                                        dismiss();
+                                        Toast.makeText(getContext(), "gravado com sucesso", Toast.LENGTH_LONG).show();
 
                                     }catch (NumberFormatException e){
-                                        Toast.makeText(getContext(), "Insira um digito valido", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "Insira um digito valido", Toast.LENGTH_LONG).show();
+                                    }catch (DatabaseException e){
+                                        Toast.makeText(getContext(), "Erro ao connectar", Toast.LENGTH_LONG).show();
+                                    }catch (Exception e){
+                                        Toast.makeText(getContext(), "Erro ao connectar", Toast.LENGTH_LONG).show();
+                                    }finally {
+                                        clear();
+                                        dismiss();
                                     }
                                 }else {
                                     Toast.makeText(getContext(), "Preencha a data de vencimento", Toast.LENGTH_SHORT).show();
@@ -140,9 +148,9 @@ public class BottomSheetDebitosFragment extends BottomSheetDialogFragment {
 
     public void recuperarDividaTotal(){
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(userId);
+         userRef = firebaseRef.child("usuarios").child(userId);
 
-        usuarioRef.addValueEventListener(new ValueEventListener() {
+        valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
@@ -166,6 +174,7 @@ public class BottomSheetDebitosFragment extends BottomSheetDialogFragment {
 
     public void onDestroyView() {
         super.onDestroyView();
+        userRef.removeEventListener(valueEventListenerUser);
         binding = null;
     }
 

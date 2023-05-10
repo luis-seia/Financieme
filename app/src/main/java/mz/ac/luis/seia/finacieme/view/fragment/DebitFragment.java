@@ -36,11 +36,7 @@ import mz.ac.luis.seia.finacieme.model.Divida;
 import mz.ac.luis.seia.finacieme.model.User;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DebitFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class DebitFragment extends Fragment {
     FragmentDebitBinding binding;
     private ArrayList<Divida> listDividas = new ArrayList<>();
@@ -54,41 +50,25 @@ public class DebitFragment extends Fragment {
     private      DebitAdapter debitAdapter;
     private Divida divida;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public DebitFragment() {
-
-    }
-
-
-    public static DebitFragment newInstance(String param1, String param2) {
-        DebitFragment fragment = new DebitFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
+
+    // Inicializa a referência do banco de dados
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-
+        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+        dividaRef = firebaseRef.child("divida").child(userId);
+        userRef = firebaseRef.child("usuarios").child(userId);
     }
 
     @Override
+
+    //
     public void onStart() {
         super.onStart();
+        // Mantém os dados sincronizados, mesmo quando o dispositivo estiver offline
+        dividaRef.keepSynced(true);
+        userRef.keepSynced(true);
+        // chamar metodos para recuperar os dados
         recuperarDivida();
         recuperarDividaTotal();
     }
@@ -99,6 +79,7 @@ public class DebitFragment extends Fragment {
         binding = FragmentDebitBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        // configuracao do adapter para listagem das dividas
         debitAdapter = new DebitAdapter(listDividas);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         binding.recyclerViewDebito.setLayoutManager(linearLayoutManager);
@@ -109,10 +90,8 @@ public class DebitFragment extends Fragment {
         return view;
     }
 
-
+    // inicio do metodo para recuperar as divida total
     public void recuperarDividaTotal() {
-        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        userRef = firebaseRef.child("usuarios").child(userId);
        valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -125,23 +104,22 @@ public class DebitFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
+    // fim
+
 
     @Override
     public void onStop() {
         super.onStop();
+        // evitar vazamento de memoria
         userRef.removeEventListener(valueEventListenerUser);
         dividaRef.removeEventListener(valueEventListenerDividas);
     }
 
-
+    // inicio do metodo para recuperar as dividas
     public  void recuperarDivida(){
-        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        dividaRef = firebaseRef.child("divida").child(userId);
         valueEventListenerDividas = dividaRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -157,7 +135,9 @@ public class DebitFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-    }
+    } //fim
+
+
 
     public void swipe(){
         ItemTouchHelper.Callback callback = new ItemTouchHelper.Callback() {
@@ -178,7 +158,7 @@ public class DebitFragment extends Fragment {
                 excluirMovimentacao(viewHolder);
             }
         };
-        new ItemTouchHelper(callback).attachToRecyclerView(binding.recyclerViewDebito);
+        new ItemTouchHelper(callback).attachToRecyclerView(binding.recyclerViewDebito); // permitir usar o swipe para eliminar dividas
     }
 
     public void excluirMovimentacao(RecyclerView.ViewHolder viewHolder) {
@@ -192,7 +172,7 @@ public class DebitFragment extends Fragment {
             public void onClick(DialogInterface dialog, int id) {
                 int position = viewHolder.getAdapterPosition();
                 divida = listDividas.get(position);
-                String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+                String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail()); // acessar a dividada relacionada ao usuario e eliminar
                 dividaRef = firebaseRef.child("divida").child(userId);
                 dividaRef.child(divida.getKey()).removeValue();
                 debitAdapter.notifyItemRemoved(position);
@@ -203,7 +183,6 @@ public class DebitFragment extends Fragment {
             public void onClick(DialogInterface dialog, int id) {
                 Toast.makeText(getContext(), "Cancelado", Toast.LENGTH_SHORT).show();
                 debitAdapter.notifyDataSetChanged();
-
             }
         });
 
@@ -212,9 +191,6 @@ public class DebitFragment extends Fragment {
     }
 
     public void atualizarDivida(){
-        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        userRef = firebaseRef.child("usuarios").child(userId);
-
         debitoTotal-= divida.getValor();
         userRef.child("debitoTotal").setValue(debitoTotal);
     }
@@ -223,6 +199,5 @@ public class DebitFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 
 }

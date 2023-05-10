@@ -24,7 +24,12 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,17 +38,23 @@ import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.adapter.IconSpinnerAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentBottomSheetCartaoBinding;
 import mz.ac.luis.seia.finacieme.databinding.FragmentBottomSheetDebitosBinding;
+import mz.ac.luis.seia.finacieme.helper.Base64Custom;
 import mz.ac.luis.seia.finacieme.helper.CustomItem;
 import mz.ac.luis.seia.finacieme.model.Carteira;
+import mz.ac.luis.seia.finacieme.model.User;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
 
 public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
     FragmentBottomSheetCartaoBinding binding;
     ArrayList<CustomItem> customItems;
+    private double SaldoTotal;
+    private DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDataBase();
+    private FirebaseAuth auth = ConfigFirebase.getAuth();
+    private DatabaseReference userRef;
+    private ValueEventListener valueEventListenerUser;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private String mParam1;
     private String mParam2;
 
@@ -63,18 +74,21 @@ public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+        userRef = firebaseRef.child("usuarios").child(userId);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onStart() {
+        super.onStart();
+        userRef.keepSynced(true);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBottomSheetCartaoBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-
+        recuperarSaldoTotal();
         return view;
     }
 
@@ -99,21 +113,29 @@ public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
                             String nome = binding.editNome.getText().toString();
                             CustomItem customItem = (CustomItem) binding.spinnerIcones.getSelectedItem();
                             Drawable icon = getDrawable(getContext(),customItem.getSpinnerIconImage());
+
+                            int iconResourceId =  customItem.getSpinnerIconImage();
                             String tipo = binding.radioButtonCartao.isChecked()? "cartao":"conta";
-                            Carteira carteira = new Carteira(nome,saldo,tipo,icon);
+                            Carteira carteira = new Carteira(nome,saldo,tipo,iconResourceId);
                             carteira.salvar();
+                            double SaldoActualizado = saldo + SaldoTotal;
+                            atualizarSaldo(SaldoActualizado);
                             dismiss();
-                            Toast.makeText(getContext(), "salvo Com sucesso", Toast.LENGTH_SHORT).show();
-                        }catch (NumberFormatException e){
-                            Toast.makeText(getContext(), "insira um valor valido", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "salvo Com sucesso", Toast.LENGTH_LONG).show();
+                        }catch (NumberFormatException e ){
+                            Toast.makeText(getContext(), "insira um valor valido", Toast.LENGTH_LONG).show();
+                        }catch (DatabaseException e){
+                            Toast.makeText(getContext(), "Erro ao connectar", Toast.LENGTH_LONG).show();
+                        }catch (Exception e){
+                            Toast.makeText(getContext(), "Erro ao connectar", Toast.LENGTH_LONG).show();
+                        }finally {
+                            dismiss();
                         }
-
-
                     }else{
-                        Toast.makeText(getContext(), "Preencha o nome do cartao", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Preencha o nome do cartao", Toast.LENGTH_LONG).show();
                     }
                 }else {
-                    Toast.makeText(getContext(), "Preencha o valor do saldo disponivel", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Preencha o valor do saldo disponivel", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -121,8 +143,8 @@ public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
 
     private ArrayList<CustomItem> getCustomItems() {
         customItems = new ArrayList<>();
-        customItems.add(new CustomItem("Mpesa",R.drawable.mpesa));
         customItems.add(new CustomItem("BNI",R.drawable.bni));
+        customItems.add(new CustomItem("Mpesa",R.drawable.mpesa));
         customItems.add(new CustomItem("My money",R.drawable.my_money));
         customItems.add(new CustomItem("Ponto 24",R.drawable.ponto_24));
         customItems.add(new CustomItem("Standard Bank",R.drawable.standard));
@@ -144,7 +166,32 @@ public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
 
     public void onDestroyView() {
         super.onDestroyView();
+        userRef.removeEventListener(valueEventListenerUser);
         binding = null;
     }
+
+    public void recuperarSaldoTotal(){
+        valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                SaldoTotal = user.getSaldoTotal();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Falha na conexao. \n certifique-se que esta ligo a internet", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void atualizarSaldo(Double saldo){
+        userRef.child("saldoTotal").setValue(saldo);
+    }
+
+
+
+
+
 
 }

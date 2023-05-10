@@ -6,6 +6,8 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:backgroundTint="#E6F2F9"
     android:orientation="vertical">
 
     <include layout="@layout/toolbar" />

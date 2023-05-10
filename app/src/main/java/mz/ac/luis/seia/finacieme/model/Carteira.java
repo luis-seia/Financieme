@@ -1,8 +1,11 @@
 package mz.ac.luis.seia.finacieme.model;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
@@ -12,30 +15,41 @@ public class Carteira {
     private String nome;
     private Double saldo;
     private String tipo;
-    private Drawable icon;
+    private int iconResourceId;
+    private String key;
 
-    public Drawable getIcon() {
-        return icon;
-    }
 
-    public void setIcon(Drawable icon) {
-        this.icon = icon;
+
+    public int getIconResourceId() {
+        return iconResourceId;
     }
 
     public Carteira() {
     }
 
-    public Carteira(String nome, Double saldo, String tipo, Drawable icon) {
+    public Carteira(String nome, Double saldo, String tipo, int iconResourceId) {
         this.nome = nome;
         this.saldo = saldo;
         this.tipo = tipo;
-        this.icon = icon;
+        this.iconResourceId = iconResourceId;
     }
 
-    public Carteira(Drawable icon, String nome, Double saldo) {
-        this.icon = icon;
+    public Carteira(int iconResourceId, String nome, Double saldo) {
+        this.iconResourceId = iconResourceId;
         this.nome = nome;
         this.saldo = saldo;
+    }
+
+    public void setIconResourceId(int iconResourceId) {
+        this.iconResourceId = iconResourceId;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getTipo() {
@@ -66,9 +80,22 @@ public class Carteira {
         FirebaseAuth auth = ConfigFirebase.getAuth();
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
         DatabaseReference firebase = ConfigFirebase.getFirebaseDataBase();
-        firebase.child("carteria")
+        firebase.child("carteira")
                 .child(userId)
                 .push()
-                .setValue(this);
+                .setValue(this,new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            // Ocorreu um erro ao salvar os dados
+
+                        } else {
+                            // Os dados foram salvos com sucesso
+
+                        }
+                    }
+                });
+
+
     }
 }

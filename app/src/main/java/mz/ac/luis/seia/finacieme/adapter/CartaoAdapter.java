@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class CartaoAdapter extends RecyclerView.Adapter<CartaoAdapter.MyViewHold
 
 
     ArrayList<Carteira> carteiras = new ArrayList<>();
+    private int mCellHeight = -1;
 
     public CartaoAdapter(ArrayList<Carteira> carteiras) {
         this.carteiras = carteiras;
@@ -39,7 +41,9 @@ public class CartaoAdapter extends RecyclerView.Adapter<CartaoAdapter.MyViewHold
             Carteira carteira = carteiras.get(position);
             holder.nome.setText(carteira.getNome());
             holder.saldo.setText(""+carteira.getSaldo());
-            holder.imageView.setImageDrawable(carteira.getIcon());
+            holder.imageView.setImageResource(carteira.getIconResourceId());
+
+
     }
 
     @Override
@@ -54,9 +58,7 @@ public class CartaoAdapter extends RecyclerView.Adapter<CartaoAdapter.MyViewHold
 
 
         public MyViewHolder(@NonNull View itemView) {
-
             super(itemView);
-
             imageView = itemView.findViewById(R.id.imageviewCartso);
             saldo = itemView.findViewById(R.id.textViewSaldoConta);
             nome = itemView.findViewById(R.id.textViewCartao);
