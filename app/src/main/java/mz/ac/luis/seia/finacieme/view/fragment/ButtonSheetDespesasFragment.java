@@ -119,6 +119,7 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
     public void onDestroyView() {
         super.onDestroyView();
         carteiraRef.removeEventListener(valueEventListenerCarteira);
+        userRef.removeEventListener(valueEventListenerUser);
         binding = null;
     }
 
@@ -131,7 +132,6 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
         binding.spinnerPagocom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("TAG",carteiras.get(i).toString());
                 carteira = carteiras.get(i);
             }
 
@@ -212,7 +212,7 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
     }
 
     public void actualizarDespesaTotal(double despesa){
-        userRef.child("despesaTotal").setValue(despesaTotal);
+        userRef.child("despesaTotal").setValue(despesa);
     }
 
     public void actualizarSaldoTotal(Double saldo){
