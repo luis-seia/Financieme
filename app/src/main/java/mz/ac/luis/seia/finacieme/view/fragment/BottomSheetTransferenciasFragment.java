@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.adapter.IconSpinnerAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentBottomSheetTransferenciasBinding;
-import mz.ac.luis.seia.finacieme.databinding.FragmentButtonSheetDespesasBinding;
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
 import mz.ac.luis.seia.finacieme.helper.CustomItem;
-import mz.ac.luis.seia.finacieme.helper.DataCustom;
+import mz.ac.luis.seia.finacieme.helper.DateCustom;
 import mz.ac.luis.seia.finacieme.model.Carteira;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
@@ -62,7 +59,7 @@ FragmentBottomSheetTransferenciasBinding binding;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.editData.setText(DataCustom.currentData());
+        binding.editData.setText(DateCustom.currentData());
         adapterCarteira = new IconSpinnerAdapter(getContext(), customItems);
         if(customItems !=null){
             binding.spinnerContaDestino.setAdapter(adapterCarteira);

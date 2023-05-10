@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ import mz.ac.luis.seia.finacieme.adapter.IconSpinnerAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentBlottomSheetReceitaBinding;
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
 import mz.ac.luis.seia.finacieme.helper.CustomItem;
-import mz.ac.luis.seia.finacieme.helper.DataCustom;
+import mz.ac.luis.seia.finacieme.helper.DateCustom;
 import mz.ac.luis.seia.finacieme.model.Carteira;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
@@ -69,7 +68,7 @@ public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1,CATEGORIA);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerCategoriaReceita.setAdapter(adapter);
-        binding.editDataReceita.setText(DataCustom.currentData());
+        binding.editDataReceita.setText(DateCustom.currentData());
         adapterCarteira = new IconSpinnerAdapter(getContext(), customItems);
         if(customItems !=null){
             binding.spinnerContaAreceber.setAdapter(adapterCarteira);

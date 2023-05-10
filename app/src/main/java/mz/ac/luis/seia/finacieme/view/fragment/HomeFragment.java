@@ -178,7 +178,6 @@ public class HomeFragment extends Fragment {
     }
 
     public void recuperarSaldoTotal() {
-        userRef.keepSynced(true);
         valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
