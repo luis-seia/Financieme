@@ -38,7 +38,7 @@ public class TransictionsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        movimentacaoRef = firebaseRef.child("divida").child(userId);
+        movimentacaoRef = firebaseRef.child("movimentacao").child(userId);
         userRef = firebaseRef.child("usuarios").child(userId);
     }
 
@@ -54,7 +54,7 @@ public class TransictionsFragment extends Fragment {
         valueEventListenerMov = movimentacaoRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listDividas.clear();
+                movimentacoes.clear();
                 for(DataSnapshot dados: snapshot.getChildren()){
                     Divida divida = dados.getValue(Divida.class);
                     divida.setKey(dados.getKey());
