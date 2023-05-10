@@ -21,6 +21,7 @@ import mz.ac.luis.seia.finacieme.databinding.FragmentTransictionsBinding;
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
 import mz.ac.luis.seia.finacieme.model.Divida;
 import mz.ac.luis.seia.finacieme.model.Movimentacao;
+import mz.ac.luis.seia.finacieme.model.User;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
 
@@ -29,7 +30,9 @@ public class TransictionsFragment extends Fragment {
     private DatabaseReference userRef;
     private DatabaseReference movimentacaoRef;
     private FirebaseAuth auth = ConfigFirebase.getAuth();
-    private Double debitoTotal;
+    private Double  receitaTotal ;
+    private Double  saldoTotal  ;
+    private Double despesaTotal;
     private ValueEventListener valueEventListenerUser;
     private ValueEventListener valueEventListenerMov;
     FragmentTransictionsBinding binding;
@@ -50,15 +53,24 @@ public class TransictionsFragment extends Fragment {
         return view;
     }
 
+    public void onStart() {
+        super.onStart();
+        // Mantém os dados sincronizados, mesmo quando o dispositivo estiver offline
+        movimentacaoRef.keepSynced(true);
+        userRef.keepSynced(true);
+        recuperarMovimentacao();
+    }
+
     public  void recuperarMovimentacao(){
         valueEventListenerMov = movimentacaoRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 movimentacoes.clear();
                 for(DataSnapshot dados: snapshot.getChildren()){
-                    Divida divida = dados.getValue(Divida.class);
-                    divida.setKey(dados.getKey());
-                    listDividas.add(divida);
+                    Movimentacao movimentacao = dados.getValue(Movimentacao.class);
+                    assert movimentacao != null;
+                    movimentacao.setKey(dados.getKey());
+                    movimentacoes.add(movimentacao);
                 }
                 debitAdapter.notifyDataSetChanged();
             }
@@ -68,4 +80,20 @@ public class TransictionsFragment extends Fragment {
         });
     }
 
+    public void recuperarTotal(){
+        valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                assert user != null;
+                receitaTotal = user.getReceitaTotal();
+                saldoTotal = user.getSaldoTotal();
+                despesaTotal = user.getDespesaTotal();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }
