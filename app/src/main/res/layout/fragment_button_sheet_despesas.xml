@@ -15,7 +15,7 @@
         android:background="@color/black" />
 
     <EditText
-        android:id="@+id/editLoginEmail"
+        android:id="@+id/editDescricaoDespesa"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
@@ -95,7 +95,6 @@
             android:layout_height="60dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:background="@drawable/custum_input"
             android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
             android:drawablePadding="5dp"
@@ -106,7 +105,7 @@
 
         <EditText
             android:id="@+id/editValorDespesa"
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="60dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"

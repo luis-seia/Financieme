@@ -1,6 +1,6 @@
 package mz.ac.luis.seia.finacieme.model;
 
-public abstract class Movimentacao {
+public class Movimentacao {
     private String descricao;
     private String categoria;
     private String data;
