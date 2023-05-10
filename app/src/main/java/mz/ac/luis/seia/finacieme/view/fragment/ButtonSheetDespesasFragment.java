@@ -58,7 +58,7 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
         super.onCreate(savedInstanceState);
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
         carteiraRef = firebaseRef.child("carteira").child(userId);
-        userRef = firebaseRef.child("usuario").child(userId);
+        userRef = firebaseRef.child("usuarios").child(userId);
     }
 
     @Override
@@ -127,6 +127,7 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
         super.onStart();
         carteiraRef.keepSynced(true);
         recuperarCarteira();
+        recuperarDespesaTotal();
         binding.spinnerPagocom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -167,7 +168,6 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
     }
 
     public void salvarDespesa(){
-
         if(isFilds()){
             try{
                 String descricao = binding.editDescricaoDespesa.getText().toString();
@@ -179,10 +179,10 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
                 Movimentacao movimentacao = new Movimentacao(descricao,categoria,valor,data,tipo,conta) ;
                 movimentacao.salvar(data);
                 double despesa = valor + despesaTotal;
-                actualizarDespesa(despesa);
-                double saldo = saldoActual - valor;
-                actualizarSaldo(saldo);
-               actualizarSaldoCarteira(carteira.getSaldo()-valor);
+                actualizarDespesaTotal(despesa);
+                double saldo = saldoTotal - valor;
+                actualizarSaldoTotal(saldo);
+                actualizarSaldoCarteira(saldoActual-valor);
                 Toast.makeText(getContext(), "Salvo com sucesso", Toast.LENGTH_SHORT).show();
             }catch (NumberFormatException e){
                 Toast.makeText(getContext(), "Insira um valor Valido", Toast.LENGTH_SHORT).show();
@@ -191,7 +191,6 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
             }    finally {
                 dismiss();
             }
-
         }
     }
 
@@ -212,11 +211,11 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
    });
     }
 
-    public void actualizarDespesa(double despesa){
+    public void actualizarDespesaTotal(double despesa){
         userRef.child("despesaTotal").setValue(despesaTotal);
     }
 
-    public void actualizarSaldo(Double saldo){
+    public void actualizarSaldoTotal(Double saldo){
         userRef.child("saldoTotal").setValue(saldo);
     }
 
