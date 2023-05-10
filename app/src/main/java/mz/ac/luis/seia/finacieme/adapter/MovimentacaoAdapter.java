@@ -1,6 +1,7 @@
 package mz.ac.luis.seia.finacieme.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,11 @@ import mz.ac.luis.seia.finacieme.model.Movimentacao;
 
 public class MovimentacaoAdapter extends RecyclerView.Adapter<MovimentacaoAdapter.MyViewHolder> {
     ArrayList<Movimentacao> movimentacoes = new ArrayList<>();
+    Context context;
 
-
-    public MovimentacaoAdapter(ArrayList<Movimentacao> movimentacoes) {
+    public MovimentacaoAdapter(ArrayList<Movimentacao> movimentacoes, Context context) {
         this.movimentacoes = movimentacoes;
+        this.context = context;
     }
 
 

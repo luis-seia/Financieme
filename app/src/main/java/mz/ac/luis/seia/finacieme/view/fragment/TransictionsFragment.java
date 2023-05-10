@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import mz.ac.luis.seia.finacieme.adapter.MovimentacaoAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentTransictionsBinding;
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
 import mz.ac.luis.seia.finacieme.model.Divida;
@@ -32,6 +33,7 @@ public class TransictionsFragment extends Fragment {
     private DatabaseReference movimentacaoRef;
     private FirebaseAuth auth = ConfigFirebase.getAuth();
     private Double  receitaTotal ;
+    MovimentacaoAdapter movimentacaoAdapter;
     private Double  saldoTotal  ;
     private Double despesaTotal;
     private ValueEventListener valueEventListenerUser;
@@ -57,7 +59,7 @@ public class TransictionsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+         movimentacaoAdapter = new MovimentacaoAdapter(movimentacoes, getContext());
     }
 
     //
@@ -81,7 +83,7 @@ public class TransictionsFragment extends Fragment {
                     movimentacao.setKey(dados.getKey());
                     movimentacoes.add(movimentacao);
                 }
-                debitAdapter.notifyDataSetChanged();
+                movimentacaoAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
