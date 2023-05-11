@@ -54,9 +54,6 @@ public class TransictionsFragment extends Fragment {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
     }
 
     @Override
@@ -64,9 +61,6 @@ public class TransictionsFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentTransictionsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-
-
-
         return view;
     }
 
@@ -80,20 +74,6 @@ public class TransictionsFragment extends Fragment {
         movimentacaoRef = firebaseRef.child("movimentacao").child(userId).child(mesAno);
         userRef = firebaseRef.child("usuarios").child(userId);
         // configuracao do adapter para listagem das dividas
-
-    }
-
-    //
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // Mantém os dados sincronizados, mesmo quando o dispositivo estiver offline
-        movimentacaoRef.keepSynced(true);
-        userRef.keepSynced(true);
-        recuperarMovimentacao();
-        recuperarTotal();
-
         movimentacaoAdapter = new MovimentacaoAdapter(movimentacoes, getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         binding.recyclerMov.setLayoutManager(linearLayoutManager);
@@ -101,6 +81,17 @@ public class TransictionsFragment extends Fragment {
         binding.recyclerMov.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
         binding.recyclerMov.setAdapter(movimentacaoAdapter);
 
+    }
+
+    //
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Mantém os dados sincronizados, mesmo quando o dispositivo estiver offline
+        movimentacaoRef.keepSynced(true);
+        userRef.keepSynced(true);
+        recuperarMovimentacao();
+        recuperarTotal();
     }
 
     public  void recuperarMovimentacao(){
@@ -112,7 +103,6 @@ public class TransictionsFragment extends Fragment {
                     Movimentacao movimentacao = dados.getValue(Movimentacao.class);
                     assert movimentacao != null;
                     movimentacao.setKey(dados.getKey());
-                    Log.i("Movintacao", movimentacao.getCategoria());
                     movimentacoes.add(movimentacao);
                 }
                 movimentacaoAdapter.notifyDataSetChanged();
