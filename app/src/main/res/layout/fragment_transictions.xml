@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#FAFAFA"
+    android:backgroundTint="#E6F2F9"
     android:orientation="vertical"
     tools:context=".view.fragment.TransictionsFragment">
 

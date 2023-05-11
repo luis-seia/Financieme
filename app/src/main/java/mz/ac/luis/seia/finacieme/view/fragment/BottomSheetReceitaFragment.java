@@ -80,10 +80,22 @@ public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerCategoriaReceita.setAdapter(adapter);
         binding.editDataReceita.setText(DateCustom.currentData());
+        binding.spinnerCategoriaReceita.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                categoria =CATEGORIA[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         adapterCarteira = new IconSpinnerAdapter(getContext(), customItems);
         if(customItems !=null){
             binding.spinnerContaAreceber.setAdapter(adapterCarteira);
         }
+
     }
 
     public void onDestroyView() {
