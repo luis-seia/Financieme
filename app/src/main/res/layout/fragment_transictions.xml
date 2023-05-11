@@ -84,7 +84,7 @@
     </LinearLayout>
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/calendarViewTrasancions"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:mcv_selectionColor="#00F"
