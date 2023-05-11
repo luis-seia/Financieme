@@ -152,8 +152,8 @@ public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
             }
         });
     }
-    public void actualizarReceitaTotal(double despesa){
-        userRef.child("receitaTotal").setValue(receitaTotal);
+    public void actualizarReceitaTotal(double receita){
+        userRef.child("receitaTotal").setValue(receita);
     }
 
     public void actualizarSaldoTotal(Double saldo){
