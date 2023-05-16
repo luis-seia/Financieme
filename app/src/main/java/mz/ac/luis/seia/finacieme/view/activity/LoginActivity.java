@@ -45,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         // add the fragments
-        viewPagerAdapter.add(new LoginFragment(), "Conversas");
-        viewPagerAdapter.add(new RegistroFragment(), "Contactos");
+        viewPagerAdapter.add(new LoginFragment(), "Iniciar sessão");
+        viewPagerAdapter.add(new RegistroFragment(), "Criar conta");
 
         viewPager.setAdapter(viewPagerAdapter);
 

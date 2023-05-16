@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
     <EditText
@@ -11,7 +11,7 @@
         android:layout_width="363dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/custum_input"
         android:drawableLeft="@drawable/ic_email"
@@ -29,7 +29,7 @@
         android:layout_width="363dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/custum_input"
         android:drawableLeft="@drawable/ic_lock_person"
@@ -47,14 +47,13 @@
         android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/botao_login"
         android:text="Registar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editSenhaRegistar" />
-
 
 
     <LinearLayout
@@ -72,18 +71,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginTop="16dp"
-            android:text="Esqueci a senha!"
+            android:text="Esqueceu a senha?"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/textViewFalcaLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:text="Faça login"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
