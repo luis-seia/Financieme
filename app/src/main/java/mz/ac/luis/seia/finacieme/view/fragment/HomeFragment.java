@@ -108,6 +108,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        userRef.keepSynced(true);
+        carteiraRef.keepSynced(true);
+        dividaRef.keepSynced(true);
         recuperarCarteira();
         recuperarSaldoTotal();
         recuperarDividaTotal();
@@ -178,9 +181,8 @@ public class HomeFragment extends Fragment {
     public void recuperarSaldoTotal() {
         valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot ) {
                 User user = snapshot.getValue(User.class);
-                Log.i("tg", String.valueOf(user.toString()));
                 saldoTotal = user.getSaldoTotal();
                 DecimalFormat decimalFormat = new DecimalFormat("0.##");
                 String ressult = decimalFormat.format(saldoTotal);

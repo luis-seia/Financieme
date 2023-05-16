@@ -20,6 +20,7 @@ public class MainActivity extends IntroActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        verificarUsuarioLogado();
         setButtonBackVisible(false);
         setButtonNextVisible(false);
 
