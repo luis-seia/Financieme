@@ -52,64 +52,12 @@ public class LoginActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-//        binding.progressBar.setVisibility(View.GONE);
 //
-//        binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if( !binding.editLoginEmail.getText().toString().isEmpty()){
-//                    if (!binding.editLoginSenha.getText().toString().isEmpty()){
-//                        user = new User(binding.editLoginEmail.getText().toString(), binding.editLoginSenha.getText().toString());
-//                        validateUser(user);
-//                    }else{
-//                        Toast.makeText(LoginActivity.this, "preencha o email", Toast.LENGTH_SHORT).show();
-//                    }
-//                }else{
-//                    Toast.makeText(LoginActivity.this, "Preencha a senha", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//
-//        binding.textViewRegistar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
-//                finish();
-//            }
-//        });
     }
 
-    public void validateUser(User user){
-        //binding.progressBar.setVisibility(View.VISIBLE);
-//        auth = ConfigFirebase.getAuth();
-//        auth.signInWithEmailAndPassword(user.getEmail(),user.getSenha())
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if(task.isSuccessful()){
-//                            binding.progressBar.setVisibility(View.GONE);
-//                            openMasterActivity();
-//                            finish();
-//                        }else{
-//                            String excecao = "";
-//                            try {
-//                                throw   task.getException();
-//                            }catch (FirebaseAuthInvalidCredentialsException | FirebaseAuthInvalidUserException e){
-//                                excecao = "Email ou senhas invalidos";
-//                            } catch (Exception e) {
-//                                excecao = "erro ao efectuar Login";
-//                                e.printStackTrace();
-//                            }
-//                            Toast.makeText(LoginActivity.this, excecao, Toast.LENGTH_SHORT).show();
-//                            binding.progressBar.setVisibility(View.GONE);
-//                        }
-//                    }
-//                });
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
     }
-
-    public void openMasterActivity(){
-        startActivity(new Intent(this, MasterActivity.class));
-    }
-
-
 }
