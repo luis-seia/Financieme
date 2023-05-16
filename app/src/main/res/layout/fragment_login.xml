@@ -3,16 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editEmailRegistar"
+        android:id="@+id/editLoginEmail"
         android:layout_width="363dp"
         android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/custum_input"
         android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="5dp"
@@ -22,15 +29,14 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
 
     <EditText
-        android:id="@+id/editSenhaRegistar"
+        android:id="@+id/editLoginSenha"
         android:layout_width="363dp"
         android:layout_height="60dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
         android:background="@drawable/custum_input"
         android:drawableLeft="@drawable/ic_lock_person"
         android:drawablePadding="5dp"
@@ -40,26 +46,23 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmailRegistar" />
+        app:layout_constraintTop_toBottomOf="@+id/editLoginEmail" />
 
     <Button
         android:id="@+id/buttonRegistar"
         android:layout_width="347dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/botao_login"
         android:text="Registar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSenhaRegistar" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editLoginSenha" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginTop="16dp"
-            android:text="Esqueceu a senha?"
+            android:text="Esquecieua senha?"
             android:textColor="@color/black" />
 
     </LinearLayout>
