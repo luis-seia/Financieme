@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ public class HomeFragment extends Fragment {
     private DatabaseReference carteiraRef;
     private FirebaseAuth auth = ConfigFirebase.getAuth();
     Carteira carteira;
-    private Double debitoTotal;
+    private double debitoTotal;
     private double saldoTotal;
     private ValueEventListener valueEventListenerCarteira;
     private ValueEventListener valueEventListenerUser;
@@ -107,9 +108,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        dividaRef.keepSynced(true);
-        userRef.keepSynced(true);
-        carteiraRef.keepSynced(true);
         recuperarCarteira();
         recuperarSaldoTotal();
         recuperarDividaTotal();
@@ -182,6 +180,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
+                Log.i("tg", String.valueOf(user.toString()));
                 saldoTotal = user.getSaldoTotal();
                 DecimalFormat decimalFormat = new DecimalFormat("0.##");
                 String ressult = decimalFormat.format(saldoTotal);

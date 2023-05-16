@@ -60,5 +60,7 @@
         <item>Remuneração por serviços de marketing afiliado</item>
         <item>Ganhos por meio de programas de afiliados de empresas</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
