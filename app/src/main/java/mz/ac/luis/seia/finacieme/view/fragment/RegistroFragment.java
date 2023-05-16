@@ -73,7 +73,6 @@ FragmentRegistroBinding bindingRegistro;
         }
         return validation;
     }
-
     public void saveUser(User user){
         auth = ConfigFirebase.getAuth();
         auth.createUserWithEmailAndPassword(user.getEmail(), user.getSenha()).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
