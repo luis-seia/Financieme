@@ -18,35 +18,35 @@ public class User {
     public User() {
     }
 
-    public Double getSaldoTotal() {
+    public double getSaldoTotal() {
         return saldoTotal;
     }
 
-    public void setSaldoTotal(Double saldoTotal) {
+    public void setSaldoTotal(double saldoTotal) {
         this.saldoTotal = saldoTotal;
     }
 
-    public Double getDebitoTotal() {
+    public double getDebitoTotal() {
         return debitoTotal;
     }
 
-    public void setDebitoTotal(Double debitoTotal) {
+    public void setDebitoTotal(double debitoTotal) {
         this.debitoTotal = debitoTotal;
     }
 
-    public Double getReceitaTotal() {
+    public double getReceitaTotal() {
         return receitaTotal;
     }
 
-    public void setReceitaTotal(Double receitaTotal) {
+    public void setReceitaTotal(double receitaTotal) {
         this.receitaTotal = receitaTotal;
     }
 
-    public Double getDespesaTotal() {
+    public double getDespesaTotal() {
         return despesaTotal;
     }
 
-    public void setDespesaTotal(Double despesaTotal) {
+    public void setDespesaTotal(double despesaTotal) {
         this.despesaTotal = despesaTotal;
     }
 

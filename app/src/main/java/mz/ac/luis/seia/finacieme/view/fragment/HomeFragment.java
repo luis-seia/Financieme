@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -33,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.adapter.CartaoAdapter;
 import  mz.ac.luis.seia.finacieme.databinding.FragmentHomeBinding;
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
@@ -51,13 +54,17 @@ public class HomeFragment extends Fragment {
     private DatabaseReference carteiraRef;
     private FirebaseAuth auth = ConfigFirebase.getAuth();
     Carteira carteira;
+    private float  receitaTotal;
+    private float despesaTotal;
     private double debitoTotal;
-    private double saldoTotal;
+    private float saldoTotal;
+    private PieChart chart;
     private ValueEventListener valueEventListenerCarteira;
     private ValueEventListener valueEventListenerUser;
     CartaoAdapter cartaoAdapter;
-
-
+    ArrayList<PieEntry> pieEntries = new ArrayList<>();
+    PieDataSet pieDataSet;
+    PieData pieData;
     public HomeFragment() {
 
     }
@@ -71,6 +78,7 @@ public class HomeFragment extends Fragment {
         userRef = firebaseRef.child("usuarios").child(userId);
         carteiraRef = firebaseRef.child("carteira").child(userId);
         dividaRef = firebaseRef.child("usuarios").child(userId);
+        recuperarSaldoTotal();
     }
 
     @Override
@@ -78,20 +86,21 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         swipe();
+        chart = view.findViewById(R.id.grafico);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        createGraphic();
-        cartaoAdapter = new CartaoAdapter(carteiras);
 
+        cartaoAdapter = new CartaoAdapter(carteiras);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         binding.recyclerViewCartoes.setLayoutManager(linearLayoutManager);
         binding.recyclerViewCartoes.setHasFixedSize(true);
         binding.recyclerViewCartoes.addItemDecoration(new DividerItemDecoration(getContext() , LinearLayout.VERTICAL));
         binding.recyclerViewCartoes.setAdapter(cartaoAdapter);
+
     }
 
     @Override
@@ -101,7 +110,6 @@ public class HomeFragment extends Fragment {
         carteiraRef.keepSynced(true);
         dividaRef.keepSynced(true);
         recuperarCarteira();
-        recuperarSaldoTotal();
         recuperarDividaTotal();
     }
 
@@ -111,23 +119,6 @@ public class HomeFragment extends Fragment {
         userRef.removeEventListener(valueEventListenerUser);
     }
 
-    public void createGraphic(){
-        ArrayList<PieEntry> pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(24545, "Receita"));
-        pieEntries.add(new PieEntry(54545, "Despesa"));
-        pieEntries.add(new PieEntry(35454, "Saldo"));
-
-        PieDataSet pieDataSet = new PieDataSet(pieEntries, "Descricao");
-        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        pieDataSet.setValueTextSize(13f);
-
-
-        PieData pieData = new PieData(pieDataSet);
-        binding.grafico.setData(pieData);
-        binding.grafico.getDescription().setEnabled(false);
-        binding.grafico.animate();
-
-    }
 
     public  void recuperarCarteira(){
         valueEventListenerCarteira = carteiraRef.addValueEventListener(new ValueEventListener() {
@@ -169,6 +160,8 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+
     }
 
     public void recuperarSaldoTotal() {
@@ -178,12 +171,19 @@ public class HomeFragment extends Fragment {
                 if (snapshot.exists()) {
                     User user = snapshot.getValue(User.class);
                     if (user != null) {
-                        saldoTotal = user.getSaldoTotal();
+                        receitaTotal = (float) user.getReceitaTotal();
+                        Log.i("TAG", String.valueOf(receitaTotal));
+                        saldoTotal = (float) user.getSaldoTotal();
+                        despesaTotal =(float) user.getDespesaTotal();
                         DecimalFormat decimalFormat = new DecimalFormat("0.##");
                         String result = decimalFormat.format(saldoTotal);
                         binding.textSaldo.setText(result);
+
                     }
                 }
+                configGraphic();
+                chart.notifyDataSetChanged();
+                chart.invalidate();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -191,7 +191,6 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
 
     public void swipe(){
         ItemTouchHelper.Callback callback = new ItemTouchHelper.Callback() {
@@ -247,6 +246,20 @@ public class HomeFragment extends Fragment {
     public  void atualizarSaldo(){
         saldoTotal-= carteira.getSaldo();
         userRef.child("saldoTotal").setValue(saldoTotal);
+    }
+
+    public void configGraphic(){
+        pieEntries.add(new PieEntry(receitaTotal, "Receita"));
+        pieEntries.add(new PieEntry(despesaTotal, "Despesa"));
+        pieEntries.add(new PieEntry(saldoTotal, "Saldo"));
+
+        pieDataSet = new PieDataSet(pieEntries, "Descricao");
+        pieData = new PieData(pieDataSet);
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieDataSet.setValueTextSize(13f);
+        chart.setData(pieData);
+        chart.getDescription().setEnabled(false);
+        chart.animate();
     }
 
 }

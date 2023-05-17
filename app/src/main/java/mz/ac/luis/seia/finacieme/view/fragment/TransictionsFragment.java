@@ -42,9 +42,10 @@ public class TransictionsFragment extends Fragment {
     private DatabaseReference movimentacaoRef;
     private FirebaseAuth auth = ConfigFirebase.getAuth();
     private Double  receitaTotal ;
-    MovimentacaoAdapter movimentacaoAdapter;
-    private Double  saldoTotal  ;
     private Double despesaTotal;
+    private Double  saldoTotal  ;
+    MovimentacaoAdapter movimentacaoAdapter;
+
     MaterialCalendarView calendarView;
     private String mesAno;
     private ValueEventListener valueEventListenerUser;
