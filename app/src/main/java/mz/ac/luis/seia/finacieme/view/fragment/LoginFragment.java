@@ -75,6 +75,7 @@ FragmentLoginBinding binding;
                         if(task.isSuccessful()){
                             binding.progressBar.setVisibility(View.GONE);
                             openMasterActivity();
+                            getActivity().finish();
                         }else{
                             String excecao = "";
                             try {

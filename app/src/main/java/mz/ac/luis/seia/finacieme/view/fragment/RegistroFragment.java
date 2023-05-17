@@ -20,14 +20,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
-import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.databinding.FragmentRegistroBinding;
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
 import mz.ac.luis.seia.finacieme.model.User;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
-import mz.ac.luis.seia.finacieme.view.activity.LoginActivity;
 import mz.ac.luis.seia.finacieme.view.activity.MasterActivity;
-import mz.ac.luis.seia.finacieme.view.activity.RegistroActivity;
 
 
 public class RegistroFragment extends Fragment {
@@ -83,7 +80,7 @@ FragmentRegistroBinding bindingRegistro;
                     user.setIdUser(idUser);
                     user.saveFromFirebase();
                     startActivity(new Intent(getContext(), MasterActivity.class));
-
+                    getActivity().finish();
                 }else{
                     String textExcecao = "";
                     try {

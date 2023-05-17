@@ -19,7 +19,6 @@ public class MainActivity extends IntroActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         verificarUsuarioLogado();
         setButtonBackVisible(false);
         setButtonNextVisible(false);
@@ -35,9 +34,6 @@ public class MainActivity extends IntroActivity {
         startActivity(new Intent(this, LoginActivity.class));
     }
 
-    public void Cadastrar(View view){
-        startActivity(new Intent(this, RegistroActivity.class));
-    }
 
     @Override
     protected void onStart() {

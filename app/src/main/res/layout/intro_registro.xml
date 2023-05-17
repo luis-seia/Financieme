@@ -13,8 +13,8 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/botao_login"
-        android:onClick="Cadastrar"
-        android:text="Registre-se"
+        android:onClick="Entrar"
+        android:text="Entrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -31,18 +31,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/telareg" />
 
-    <TextView
-        android:id="@+id/textViewtoLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:minHeight="48dp"
-        android:onClick="Entrar"
-        android:text="Ja tenho uma conta"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCadastreSe" />
 </androidx.constraintlayout.widget.ConstraintLayout>

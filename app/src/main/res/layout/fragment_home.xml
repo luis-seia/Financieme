@@ -74,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_weight="1"
-                        android:text="0. 00 MZN"
+                        android:text="0. 00 "
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -102,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_weight="1"
-                        android:text="-14534. 00 MZN"
+                        android:text="0.00"
                         android:textColor="#E02424"
                         android:textStyle="bold" />
                 </LinearLayout>

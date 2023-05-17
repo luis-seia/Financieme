@@ -55,8 +55,6 @@ public class HomeFragment extends Fragment {
     private double saldoTotal;
     private ValueEventListener valueEventListenerCarteira;
     private ValueEventListener valueEventListenerUser;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     CartaoAdapter cartaoAdapter;
 
 
@@ -64,15 +62,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -164,11 +153,15 @@ public class HomeFragment extends Fragment {
         valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                debitoTotal = user.getDebitoTotal();
-                DecimalFormat decimalFormat = new DecimalFormat("0.##");
-                String ressult = decimalFormat.format(debitoTotal);
-                binding.textDebit.setText("-"+ressult);
+                if (snapshot.exists()) {
+                    User user = snapshot.getValue(User.class);
+                    if (user != null) {
+                        debitoTotal = user.getDebitoTotal();
+                        DecimalFormat decimalFormat = new DecimalFormat("0.##");
+                         String ressult = decimalFormat.format(debitoTotal);
+                         binding.textDebit.setText("-"+ressult);
+                    }
+                }
             }
 
             @Override
@@ -182,11 +175,15 @@ public class HomeFragment extends Fragment {
         valueEventListenerUser = userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot ) {
-                User user = snapshot.getValue(User.class);
-                saldoTotal = user.getSaldoTotal();
-                DecimalFormat decimalFormat = new DecimalFormat("0.##");
-                String ressult = decimalFormat.format(saldoTotal);
-                binding.textSaldo.setText(""+ressult);
+                if (snapshot.exists()) {
+                    User user = snapshot.getValue(User.class);
+                    if (user != null) {
+                        saldoTotal = user.getSaldoTotal();
+                        DecimalFormat decimalFormat = new DecimalFormat("0.##");
+                        String result = decimalFormat.format(saldoTotal);
+                        binding.textSaldo.setText(result);
+                    }
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

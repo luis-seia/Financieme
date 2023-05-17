@@ -118,7 +118,6 @@ public class TransictionsFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                assert user != null;
                 receitaTotal = user.getReceitaTotal();
                 saldoTotal = user.getSaldoTotal();
                 despesaTotal = user.getDespesaTotal();
