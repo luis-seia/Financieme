@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:backgroundTint="@color/azulescuro"
+    android:orientation="vertical"
+    tools:context=".view.fragment.BottomSheetDebitosFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@color/black" />
+
+    <EditText
+        android:id="@+id/editEntidadeDivida"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/custum_input"
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="5dp"
+        android:hint="Entidade"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textSize="14sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editValor"
+            android:layout_width="156dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/custum_input"
+            android:drawableLeft="@drawable/ic_debitos"
+            android:drawablePadding="5dp"
+            android:hint="Montante"
+            android:inputType="number|numberDecimal"
+            android:padding="10dp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editDatainicio"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/custum_input"
+            android:drawableLeft="@drawable/ic_debitos"
+            android:drawablePadding="5dp"
+            android:hint="Valor pago"
+            android:inputType="date"
+            android:padding="10dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTaxaDeJuros"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/custum_input"
+            android:drawableLeft="@drawable/ic_baseline_credit_card_off_24"
+            android:drawablePadding="5dp"
+            android:hint="Taxa de juros"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editDataVencimento"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/custum_input"
+            android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+            android:drawablePadding="5dp"
+            android:hint="Prazo de pagamento"
+            android:inputType="date"
+            android:padding="10dp"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonaSalvarDivida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="30dp"
+        android:text="Salvar" />
+
+</LinearLayout>

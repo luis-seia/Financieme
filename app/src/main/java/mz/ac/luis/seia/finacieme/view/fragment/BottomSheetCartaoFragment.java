@@ -152,7 +152,6 @@ public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
         customItems.add(new CustomItem("Outros",R.drawable.ic_account_balance));
         customItems.add(new CustomItem("Reserva",R.drawable.ic_ccount_));
         customItems.add(new CustomItem("Outras Carteiras",R.drawable.ic_card));
-        customItems.add(new CustomItem("BNI",R.drawable.bni));
         return customItems;
     }
 

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 
 import mz.ac.luis.seia.finacieme.R;
 import mz.ac.luis.seia.finacieme.adapter.DebitAdapter;
+import mz.ac.luis.seia.finacieme.adapter.RecyclerItemClickListener;
 import mz.ac.luis.seia.finacieme.databinding.FragmentDebitBinding;
 import mz.ac.luis.seia.finacieme.databinding.FragmentLearnBinding;
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
@@ -88,6 +90,32 @@ public class DebitFragment extends Fragment {
         binding.recyclerViewDebito.setAdapter(debitAdapter);
         swipe();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.recyclerViewDebito.addOnItemTouchListener(new RecyclerItemClickListener(
+                getContext(), binding.recyclerViewDebito, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                divida = listDividas.get(position);
+                EditarDividaFragment editarDividaFragment = new EditarDividaFragment();
+                editarDividaFragment.show(getFragmentManager(), "");
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        }
+        ));
     }
 
     // inicio do metodo para recuperar as divida total
