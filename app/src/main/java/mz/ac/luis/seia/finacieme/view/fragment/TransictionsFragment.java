@@ -45,7 +45,6 @@ public class TransictionsFragment extends Fragment {
     private Double despesaTotal;
     private Double  saldoTotal  ;
     MovimentacaoAdapter movimentacaoAdapter;
-
     MaterialCalendarView calendarView;
     private String mesAno;
     private ValueEventListener valueEventListenerUser;
@@ -53,9 +52,6 @@ public class TransictionsFragment extends Fragment {
     FragmentTransictionsBinding binding;
     ArrayList<Movimentacao> movimentacoes = new ArrayList<>();
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,11 +67,10 @@ public class TransictionsFragment extends Fragment {
         movimentacaoAdapter = new MovimentacaoAdapter(movimentacoes, getContext());
         calendarView = view.findViewById(R.id.calendarViewTrasancions);
         configCalendar();
-        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        movimentacaoRef = firebaseRef.child("movimentacao").child(userId).child(mesAno);
-        userRef = firebaseRef.child("usuarios").child(userId);
+
         // configuracao do adapter para listagem das dividas
         movimentacaoAdapter = new MovimentacaoAdapter(movimentacoes, getContext());
+        recuperardabase();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         binding.recyclerMov.setLayoutManager(linearLayoutManager);
         binding.recyclerMov.setHasFixedSize(true);
@@ -93,6 +88,12 @@ public class TransictionsFragment extends Fragment {
         userRef.keepSynced(true);
         recuperarMovimentacao();
         recuperarTotal();
+    }
+
+    public void recuperardabase(){
+        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+        movimentacaoRef = firebaseRef.child("movimentacao").child(userId).child(mesAno);
+        userRef = firebaseRef.child("usuarios").child(userId);
     }
 
     public  void recuperarMovimentacao(){
@@ -128,7 +129,6 @@ public class TransictionsFragment extends Fragment {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -138,12 +138,12 @@ public class TransictionsFragment extends Fragment {
         CalendarDay dataAcual = calendarView.getCurrentDate();
         String mes = String.format("%02d",(dataAcual.getMonth()+1));
         mesAno = String.valueOf(mes +""+ dataAcual.getYear());
-
         calendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
                 String mes = String.format("%02d",(date.getMonth()+1));
                 mesAno = String.valueOf(mes+ ""+ date.getYear());
+                recuperardabase();
                 movimentacaoRef.removeEventListener(valueEventListenerMov);
                 recuperarMovimentacao();
             }
