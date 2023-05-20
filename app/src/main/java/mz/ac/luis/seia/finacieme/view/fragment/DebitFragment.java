@@ -58,8 +58,8 @@ public class DebitFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        dividaRef = firebaseRef.child("divida").child(userId);
-        userRef = firebaseRef.child("usuarios").child(userId);
+        dividaRef = firebaseRef.child(ConfigFirebase.dividasNo()).child(userId);
+        userRef = ConfigFirebase.getUserRef();
     }
 
     @Override
@@ -200,8 +200,6 @@ public class DebitFragment extends Fragment {
             public void onClick(DialogInterface dialog, int id) {
                 int position = viewHolder.getAdapterPosition();
                 divida = listDividas.get(position);
-                String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail()); // acessar a dividada relacionada ao usuario e eliminar
-                dividaRef = firebaseRef.child("divida").child(userId);
                 dividaRef.child(divida.getKey()).removeValue();
                 debitAdapter.notifyItemRemoved(position);
                 atualizarDivida();
@@ -220,7 +218,7 @@ public class DebitFragment extends Fragment {
 
     public void atualizarDivida(){
         debitoTotal-= divida.getValor();
-        userRef.child("debitoTotal").setValue(debitoTotal);
+        userRef.child(ConfigFirebase.debitoTotalNo()).setValue(debitoTotal);
     }
 
     public void onDestroyView() {

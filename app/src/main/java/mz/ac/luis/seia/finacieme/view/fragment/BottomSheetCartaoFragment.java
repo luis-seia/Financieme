@@ -74,8 +74,7 @@ public class BottomSheetCartaoFragment extends BottomSheetDialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        userRef = firebaseRef.child("usuarios").child(userId);
+        userRef = ConfigFirebase.getUserRef();
     }
 
     @Override

@@ -80,7 +80,7 @@ public class Carteira {
         FirebaseAuth auth = ConfigFirebase.getAuth();
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
         DatabaseReference firebase = ConfigFirebase.getFirebaseDataBase();
-        firebase.child("carteira")
+        firebase.child(ConfigFirebase.carteriasNo())
                 .child(userId)
                 .push()
                 .setValue(this,new DatabaseReference.CompletionListener() {

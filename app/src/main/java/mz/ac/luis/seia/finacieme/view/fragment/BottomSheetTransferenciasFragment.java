@@ -53,7 +53,7 @@ FragmentBottomSheetTransferenciasBinding binding;
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        carteiraRef = firebaseRef.child("carteira").child(userId);
+        carteiraRef = firebaseRef.child(ConfigFirebase.carteriasNo()).child(userId);
     }
 
     @Override

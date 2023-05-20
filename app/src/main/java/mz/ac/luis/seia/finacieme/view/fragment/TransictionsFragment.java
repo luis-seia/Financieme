@@ -1,5 +1,6 @@
 package mz.ac.luis.seia.finacieme.view.fragment;
 
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,13 +8,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,15 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
-
 import java.util.ArrayList;
-
 import mz.ac.luis.seia.finacieme.R;
-import mz.ac.luis.seia.finacieme.adapter.DebitAdapter;
 import mz.ac.luis.seia.finacieme.adapter.MovimentacaoAdapter;
 import mz.ac.luis.seia.finacieme.databinding.FragmentTransictionsBinding;
 import mz.ac.luis.seia.finacieme.helper.Base64Custom;
-import mz.ac.luis.seia.finacieme.model.Divida;
 import mz.ac.luis.seia.finacieme.model.Movimentacao;
 import mz.ac.luis.seia.finacieme.model.User;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
@@ -76,10 +70,9 @@ public class TransictionsFragment extends Fragment {
         binding.recyclerMov.setHasFixedSize(true);
         binding.recyclerMov.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
         binding.recyclerMov.setAdapter(movimentacaoAdapter);
-
     }
 
-    //
+
     @Override
     public void onStart() {
         super.onStart();
@@ -92,8 +85,8 @@ public class TransictionsFragment extends Fragment {
 
     public void recuperardabase(){
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        movimentacaoRef = firebaseRef.child("movimentacao").child(userId).child(mesAno);
-        userRef = firebaseRef.child("usuarios").child(userId);
+        movimentacaoRef = firebaseRef.child(ConfigFirebase.movimentacaoNo()).child(userId).child(mesAno);
+        userRef = ConfigFirebase.getUserRef();
     }
 
     public  void recuperarMovimentacao(){

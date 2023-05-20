@@ -50,7 +50,6 @@ public class HomeFragment extends Fragment {
     ArrayList<Carteira> carteiras = new ArrayList<>();
     private DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDataBase();
     private DatabaseReference userRef;
-    private DatabaseReference dividaRef;
     private DatabaseReference carteiraRef;
     private FirebaseAuth auth = ConfigFirebase.getAuth();
     Carteira carteira;
@@ -75,9 +74,8 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        userRef = firebaseRef.child("usuarios").child(userId);
-        carteiraRef = firebaseRef.child("carteira").child(userId);
-        dividaRef = firebaseRef.child("usuarios").child(userId);
+        userRef = ConfigFirebase.getUserRef();
+        carteiraRef = firebaseRef.child(ConfigFirebase.carteriasNo()).child(userId);
         recuperarSaldoTotal();
     }
 
@@ -108,7 +106,6 @@ public class HomeFragment extends Fragment {
         super.onStart();
         userRef.keepSynced(true);
         carteiraRef.keepSynced(true);
-        dividaRef.keepSynced(true);
         recuperarCarteira();
         recuperarDividaTotal();
     }
@@ -225,8 +222,6 @@ public class HomeFragment extends Fragment {
             public void onClick(DialogInterface dialog, int id) {
                 int position = viewHolder.getAdapterPosition();
                 carteira = carteiras.get(position);
-                String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-                carteiraRef = firebaseRef.child("carteira").child(userId);
                 carteiraRef.child(carteira.getKey()).removeValue();
                 cartaoAdapter.notifyItemRemoved(position);
                 cartaoAdapter.notifyDataSetChanged();

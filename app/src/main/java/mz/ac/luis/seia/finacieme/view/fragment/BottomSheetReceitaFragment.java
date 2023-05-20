@@ -61,8 +61,8 @@ public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        carteiraRef = firebaseRef.child("carteira").child(userId);
-        userRef = firebaseRef.child("usuarios").child(userId);
+        carteiraRef = firebaseRef.child(ConfigFirebase.carteriasNo()).child(userId);
+        userRef = ConfigFirebase.getUserRef();
     }
 
     @Override
@@ -165,11 +165,11 @@ public class BottomSheetReceitaFragment extends BottomSheetDialogFragment {
         });
     }
     public void actualizarReceitaTotal(double receita){
-        userRef.child("receitaTotal").setValue(receita);
+        userRef.child(ConfigFirebase.receitaTotalNo()).setValue(receita);
     }
 
     public void actualizarSaldoTotal(Double saldo){
-        userRef.child("saldoTotal").setValue(saldo);
+        userRef.child(ConfigFirebase.saldoTotalNo()).setValue(saldo);
     }
 
     public void actualizarSaldoCarteira(double valor){

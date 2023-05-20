@@ -45,6 +45,12 @@ public class BottomSheetDebitosFragment extends BottomSheetDialogFragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        userRef = ConfigFirebase.getUserRef();
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.editDatainicio.setText(DateCustom.currentData());
@@ -129,10 +135,8 @@ public class BottomSheetDebitosFragment extends BottomSheetDialogFragment {
     }
 
     public void atualizarDivida(Double divida){
-        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(userId);
 
-        usuarioRef.child("debitoTotal").setValue(divida);
+        userRef.child(ConfigFirebase.debitoTotalNo()).setValue(divida);
     }
 
 

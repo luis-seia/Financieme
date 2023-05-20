@@ -34,11 +34,41 @@ public class ConfigFirebase {
         }
         return refFirebase;
     }
-    public  static DatabaseReference getUser(){
+    public  static DatabaseReference getUserRef(){
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        userRef = refFirebase.child(NODE_USERS).child(userId);
+            userRef = refFirebase.child(NODE_USERS).child(userId);
         return userRef;
     }
+
+    public static String usuariosNo(){
+        return NODE_USERS;
+    }
+
+    public static String movimentacaoNo(){
+        return NODE_MOVIMENTACAO;
+    }
+    public static String receitaTotalNo(){
+        return NODE_RECEITATOTAL;
+    }
+    public static String despesaTotalNo(){
+        return NODE_DESPESATOTAL;
+    }
+    public static String debitoTotalNo(){
+        return NODE_DEBITOTOTAL;
+    }
+    public static String saldoTotalNo(){
+        return NODE_SALDOTOTAL;
+    }
+
+    public static String carteriasNo(){
+        return NODE_CARTEIRAS;
+    }
+
+    public static String dividasNo(){
+        return NODE_DIVIDA;
+    }
+
+
 
 
 

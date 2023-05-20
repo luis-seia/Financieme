@@ -57,8 +57,8 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        carteiraRef = firebaseRef.child("carteira").child(userId);
-        userRef = firebaseRef.child("usuarios").child(userId);
+        carteiraRef = firebaseRef.child(ConfigFirebase.carteriasNo()).child(userId);
+        userRef = ConfigFirebase.getUserRef();
     }
 
     @Override
@@ -212,11 +212,11 @@ public class ButtonSheetDespesasFragment extends BottomSheetDialogFragment {
     }
 
     public void actualizarDespesaTotal(double despesa){
-        userRef.child("despesaTotal").setValue(despesa);
+        userRef.child(ConfigFirebase.despesaTotalNo()).setValue(despesa);
     }
 
     public void actualizarSaldoTotal(Double saldo){
-        userRef.child("saldoTotal").setValue(saldo);
+        userRef.child(ConfigFirebase.saldoTotalNo()).setValue(saldo);
     }
 
     public void actualizarSaldoCarteira(double valor){
