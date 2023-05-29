@@ -54,7 +54,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/editDatainicio"
+            android:id="@+id/editValorPago"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="8dp"

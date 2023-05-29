@@ -25,5 +25,4 @@ private FragmentEditarDividaBinding binding;
        return binding.getRoot();
     }
 
-
 }
