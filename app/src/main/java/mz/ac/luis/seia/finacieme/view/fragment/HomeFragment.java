@@ -132,7 +132,10 @@ public class HomeFragment extends Fragment {
                 for(DataSnapshot dados: snapshot.getChildren()){
                     Carteira carteira = dados.getValue(Carteira.class);
                     carteira.setKey(dados.getKey());
-                    carteiras.add(carteira);
+                    if(carteira.getTipo().equals("cartao")){
+                        carteiras.add(carteira);
+                    }
+
                 }
                 cartaoAdapter.notifyDataSetChanged();
             }

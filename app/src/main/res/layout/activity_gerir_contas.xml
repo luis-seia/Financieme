@@ -26,6 +26,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="396dp"
         android:layout_height="514dp"
         android:layout_marginTop="8dp"
