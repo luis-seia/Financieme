@@ -1,9 +1,7 @@
 # Financieme
 
 <h1>Introdução</h1>
-<p>A privacidade é uma das preocupações mais importantes dos usuários quando se trata de dados pessoais. Com a crescente utilização de aplicativos de gestão
-financeira pessoal, torna-se ainda mais importante garantir que as informações dos usuários sejam coletadas, armazenadas e utilizadas de maneira segura e responsável. N
-este artigo, vamos elaborar uma política de privacidade para um aplicativo de gestão financeira pessoal que respeite a privacidade dos usuários.</p>
+
 
 <h2>Informações Coletadas</h2>
 <p>O aplicativo coletará as informações pessoais dos usuários necessárias para a gestão financeira pessoal, como nome, endereço de e-mail, dados de contas financeiras, histórico de transações e outras informações relevantes. As informações serão coletadas diretamente do usuário ou de instituições financeiras parceiras, com a autorização expressa do usuário. O aplicativo também pode coletar informações não pessoais, como dados de uso do aplicativo, para fins de melhoria do serviço.</p>
