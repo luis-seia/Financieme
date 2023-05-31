@@ -1,6 +1,7 @@
 package mz.ac.luis.seia.finacieme.view.fragment;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ import mz.ac.luis.seia.finacieme.helper.CustomItemDecoration;
 import mz.ac.luis.seia.finacieme.model.Carteira;
 import mz.ac.luis.seia.finacieme.model.User;
 import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
+import mz.ac.luis.seia.finacieme.view.activity.GerirContasActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -98,6 +100,11 @@ public class HomeFragment extends Fragment {
         binding.recyclerViewCartoes.setHasFixedSize(true);
         binding.recyclerViewCartoes.addItemDecoration(new DividerItemDecoration(getContext() , LinearLayout.VERTICAL));
         binding.recyclerViewCartoes.setAdapter(cartaoAdapter);
+
+        binding.buttonGerirContas.setOnClickListener(view1 -> {
+            startActivity(new Intent(getContext(), GerirContasActivity.class));
+        });
+
 
     }
 
@@ -175,7 +182,6 @@ public class HomeFragment extends Fragment {
                         DecimalFormat decimalFormat = new DecimalFormat("0.##");
                         String result = decimalFormat.format(saldoTotal);
                         binding.textSaldo.setText(result);
-
                     }
                 }
                 configGraphic();

@@ -173,7 +173,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/buttonAdicionarReceitas"
+                    android:id="@+id/buttonGerirContas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"

@@ -13,7 +13,8 @@
         android:theme="@style/Theme.Financieme"
         tools:targetApi="31">
         <activity
-            android:name=".GerirContasActivity"
+            android:name=".view.activity.GerirContasActivity"
+            android:parentActivityName=".view.activity.MasterActivity"
             android:exported="false"
             android:label="@string/title_activity_gerir_contas"
             android:theme="@style/Theme.Financieme.NoActionBar">
