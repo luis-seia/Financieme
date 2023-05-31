@@ -37,7 +37,7 @@
 
         <TextView
             android:id="@+id/textView19"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="11dp"
@@ -50,9 +50,10 @@
 
         <Spinner
             android:id="@+id/spinnerCategoriaDespesa"
-            android:layout_width="213dp"
+            android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_margin="8dp"
+            android:layout_weight="1"
             android:background="@drawable/custum_input"
             android:contentDescription="@string/receitas" />
     </LinearLayout>
@@ -64,7 +65,7 @@
 
         <TextView
             android:id="@+id/textView22"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
@@ -77,9 +78,10 @@
 
         <Spinner
             android:id="@+id/spinnerPagocom"
-            android:layout_width="213dp"
+            android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_margin="8dp"
+            android:layout_weight="1"
             android:background="@drawable/custum_input"
             android:contentDescription="@string/receitas" />
     </LinearLayout>
@@ -91,10 +93,11 @@
 
         <EditText
             android:id="@+id/editData"
-            android:layout_width="169dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_weight="1"
             android:background="@drawable/custum_input"
             android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
             android:drawablePadding="5dp"
@@ -105,11 +108,12 @@
 
         <EditText
             android:id="@+id/editValorDespesa"
-            android:layout_width="190dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:layout_weight="1"
             android:background="@drawable/custum_input"
             android:drawableLeft="@drawable/ic_debitos"
             android:drawablePadding="5dp"

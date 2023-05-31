@@ -23,7 +23,7 @@ public class MainActivity extends IntroActivity {
         setButtonBackVisible(false);
         setButtonNextVisible(false);
 
-        addSlide(new FragmentSlide.Builder().background(android.R.color.white).canGoBackward(false).fragment(R.layout.intro1).build());
+
         addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro2).build());
         addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro3).build());
         addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro_registro).canGoBackward(false) .canGoForward(false).build());
