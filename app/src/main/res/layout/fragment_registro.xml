@@ -55,7 +55,7 @@
         android:drawableLeft="@drawable/ic_lock_person"
         android:drawablePadding="5dp"
         android:hint="password"
-        android:inputType="text"
+        android:inputType="text|textPassword"
         android:padding="10dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
