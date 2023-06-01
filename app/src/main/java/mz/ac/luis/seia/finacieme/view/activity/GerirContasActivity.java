@@ -44,18 +44,19 @@ public class GerirContasActivity extends AppCompatActivity {
     private DatabaseReference userRef;
     private ValueEventListener valueEventListenerCarteira;
     private ValueEventListener valueEventListenerUser;
-    private AppBarConfiguration appBarConfiguration;
     private ActivityGerirContasBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+        userRef = ConfigFirebase.getUserRef();
+        carteiraRef = firebaseRef.child(ConfigFirebase.carteriasNo()).child(userId);
         binding = ActivityGerirContasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.toolbar.setTitle("");
         setSupportActionBar(binding.toolbar);
-
+        recuperarCarteira();
         cartaoAdapter = new CartaoAdapter(carteiras);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
@@ -63,9 +64,7 @@ public class GerirContasActivity extends AppCompatActivity {
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(this , LinearLayout.VERTICAL));
         binding.recyclerView.setAdapter(cartaoAdapter);
 
-        String userId = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        userRef = ConfigFirebase.getUserRef();
-        carteiraRef = firebaseRef.child(ConfigFirebase.carteriasNo()).child(userId);
+
 
     }
 
