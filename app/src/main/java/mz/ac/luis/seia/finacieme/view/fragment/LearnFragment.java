@@ -124,16 +124,16 @@ public class LearnFragment extends Fragment {
         Artigo artigo = new Artigo(1, "Administracao financeira");
         listaArtigos.add(artigo);
 
-        artigo = new Artigo(3, "Estrutura das financas pessoais");
+        artigo = new Artigo(2, "Estrutura das financas pessoais");
         listaArtigos.add(artigo);
 
-        artigo = new Artigo(4, "Orçamento Pessoal ou Familiar");
+        artigo = new Artigo(3, "Orçamento Pessoal ou Familiar");
         listaArtigos.add(artigo);
 
-        artigo = new Artigo(5, "Diagnostico da situacao financiera");
+        artigo = new Artigo(4, "Diagnostico da situacao financiera");
         listaArtigos.add(artigo);
 
-        artigo = new Artigo(2, "Gestao de financas pessoais");
+        artigo = new Artigo(5, "Gestao de financas pessoais");
         listaArtigos.add(artigo);
 
         artigo = new Artigo(6, "Uso do Crédito e Administração das Dívidas");
