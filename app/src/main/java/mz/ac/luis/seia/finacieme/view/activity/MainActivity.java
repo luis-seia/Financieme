@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.ktx.Firebase;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
@@ -15,6 +17,7 @@ import mz.ac.luis.seia.finacieme.repository.ConfigFirebase;
 
 public class MainActivity extends IntroActivity {
     private FirebaseAuth auth;
+    private DatabaseReference firebase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +25,6 @@ public class MainActivity extends IntroActivity {
         verificarUsuarioLogado();
         setButtonBackVisible(false);
         setButtonNextVisible(false);
-
 
         addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro2).build());
         addSlide(new FragmentSlide.Builder().background(android.R.color.white).fragment(R.layout.intro3).build());
